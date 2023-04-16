@@ -1,5 +1,6 @@
 import image from './t-shirt 1.png';
 import './App.css';
+import Slideshow from "./slideshow.jsx";
 import React, { useState } from 'react';
 
 function App() {
@@ -26,6 +27,12 @@ function App() {
     { name:'Green', id: 5 },
   ];
 
+  const images = [
+  "https://m.media-amazon.com/images/I/610DOILk1jL._AC_UL1500_.jpg",
+  "https://media.istockphoto.com/id/1210106212/photo/black-jacket-and-t-shirt-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=N1PmQECJcxIV9gF1JI2TTpZdhNpGmnQHCpDBjS2Vouk=",
+  "https://img.freepik.com/premium-photo/mens-black-leather-jacket-isolated-white-background_125604-204.jpg",
+];
+
    
 
 
@@ -35,7 +42,8 @@ function App() {
   );
 
   const colorListItems = colors.map(colors =>
-    <button className="sizeDetailsName " key={colors.id}>{colors.name}</button>
+    <button  onClick={() => handleClick(colors.id)}
+     style={{ backgroundColor: isClicked ? 'black' : 'white',color: isClicked ? 'white' : 'black'}} className="sizeDetailsName " key={colors.id}>{colors.name}</button>
   );
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -58,7 +66,16 @@ function App() {
 
   return (
     <div className="imagesProduct">
-        <img src={image} className="App-logo" alt="t-shirt" />
+   
+     
+  <Slideshow
+    images={images}
+    imageHeight={800}
+    imageWidth={800}
+    className="imageProductResize"
+  />
+  
+
     <div className="details">
         <p className="title">Men Casual Summer Shirt</p>
         <p className="price">$10.00 USD</p>
@@ -72,6 +89,7 @@ function App() {
         </p>
       <div className="quantity-button">
       <p className='quantityText'>Quantity</p>
+      <p className="borderr">
       <button className="quantity-button__decrease" onClick={handleDecrease}>
         -
       </button>
@@ -79,6 +97,14 @@ function App() {
       <button className="quantity-button__increase" onClick={handleIncrease}>
         +
       </button>
+      </p>
+    </div>
+    <div className='description'>
+      <p className="descriptionTitle">Description</p>
+      <ul className='descriptionDetails'><li>100% Cotton</li><li>20%polyester</li></ul>
+    </div>
+    <div>
+      <button className='cartButton'> Add to cart</button>
     </div>
     </div>
 
