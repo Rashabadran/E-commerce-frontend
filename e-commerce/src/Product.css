@@ -1,0 +1,167 @@
+
+ 
+
+.imagesProduct{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    
+  }
+  .productImages{
+    height:100px !important;
+  }
+  
+  .title{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 48px;
+    font-weight: bolder;
+  }
+  .price {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+  }
+  .size {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+  }
+  
+   .sizeDetails{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    
+  }
+  .sizeDetailsName{
+    border-radius: 55px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 14px;
+  }
+  .quantity-button {
+    display: flex;
+   
+    
+  }
+  .borderr{
+    border: 1px solid black;
+      padding: 5px;
+  }
+  
+  .quantity-button__decrease,
+  .quantity-button__increase {
+  background-color: white;
+    border: none;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 1;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif;
+  
+  }
+  
+  .quantity-button__quantity {
+    margin: 0 10px;
+    font-size: 25px;
+    font-weight: bold;
+   
+  }
+  .quantityText{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    margin-top: 0px;
+    padding-right:20px ;
+    margin-top:20px
+  }
+  .description{
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  .descriptionTitle{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    border-radius: 10px;
+  }
+  
+  .cartButton{
+    margin-top: 40px;
+    padding-right: 80px;
+    padding-left: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: white;
+  }
+  /* img{
+      border: 1px solid black!important;
+      border-radius: 10px;
+  } */
+  
+  
+  /* For phones */
+  @media only screen and (max-width: 500px) {
+    .imagesProduct {
+      flex-wrap: wrap;
+    }
+    img{
+      height: 400px;
+        width: 100%;
+    }
+  
+    .productImages {
+      height: 75px !important;
+    }
+  
+    .sizeDetails {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .quantity-button__quantity {
+      font-size: 20px;
+    }
+  
+    .descriptionTitle {
+      font-size: 20px;
+    }
+  
+    .cartButton {
+      font-size: 20px;
+    }
+  }
+  
+  /* For tablets */
+  @media only screen and (max-width: 1000px) {
+    .imagesProduct {
+      flex-wrap: wrap;
+    }
+  
+       img {
+         height: 400px;
+         width: 100%;
+       }
+  
+    .productImages {
+      height: 100px !important;
+    }
+  
+    .sizeDetails {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .quantity-button__quantity {
+      font-size: 22px;
+    }
+  
+    .descriptionTitle {
+      font-size: 22px;
+    }
+  
+    .cartButton {
+      font-size: 22px;
+    }
+  }
