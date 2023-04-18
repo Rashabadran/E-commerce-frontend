@@ -71,8 +71,9 @@ function App() {
   <Slideshow
     images={images}
     imageHeight={800}
-    imageWidth={800}
+    imageWidth={700}
     className="imageProductResize"
+    style={{ border: '3px solid black'}}
   />
   
 
