@@ -1,76 +1,88 @@
 .mainTitleProduct {
-text-align: center;
-font-family: "Times New Roman", Times, serif;
-font-size: 24px;
-font-weight: bolder;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 24px;
+  font-weight: bolder;
 }
 
 .card-list {
-border-radius: 10px;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-justify-items: center;
-column-gap: 120px;
-row-gap: 50px;
-margin: 0 auto;
-max-width: 1000px;
-padding: 0 20px;
-margin-top: 70px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  column-gap: 104px;
+  row-gap: 50px;
+  margin: 0 auto;
+  max-width: 1312px;
+  margin-top: 70px;
 }
+
+.product-image {
+  width: 100%;
+  height: auto;
+}
+
 .borderImages{
-border: 1px solid black;
-border-radius: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
 }
+
 .allProductsImage {
-height: 379px;
-width: 350px;
+  height: 379px;
+  width: 274px;
 }
 
 .allProductsTitle {
-padding-left: 20px;
-font-family: "Times New Roman", Times, serif;
-font-size: 24px;
-text-align: center;
+  /* padding-left: 20px; */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 24px;
+  /* text-align: center; */
 }
 
 .allProductsPrice {
-padding-left: 20px;
-font-family: "Times New Roman", Times, serif;
-font-size: 24px;
-text-align: center;
-}
-.sizeDetailsName{
-    background-color: white;
+  /* padding-left: 0px; */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 24px;
+  /* text-align: center; */
 }
 
+.sizeDetailsName{
+  background-color: white;
+}
 
 .my-carousel {
-    width: 800px;
-    height: 600px;
-    margin: 0 auto;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    width: 10%;
+  width: 10%;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    color: black;
-    /* set the arrow color to black */
-    font-size: 2rem;
+  color: black;
+  font-size: 2rem;
 }
 
 .carousel-control-prev-icon:before {
-    content: "<";
+  content: "<";
 }
 
 .carousel-control-next-icon:before {
-    content: ">";
+  content: ">";
 }
 
 .imageProductResize{
-    width:800px;
-    height:800px;
+  width:800px;
+  height:800px;
+}
+
+@media (max-width: 768px) {
+  .card-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    column-gap: 5px;
+  }
 }
