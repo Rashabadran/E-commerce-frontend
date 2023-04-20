@@ -1,16 +1,29 @@
-import React from "react";
+
 import "./Order.css";
 import jacket from "./images/jacket.png";
-import Counter from "./Counter";
 import del from "./images/del.png";
 import logo from "./images/logo.png";
 import cartlogo from "./images/cartlogo.png";
-import facebook from "./images/facebook.png"
-import whatsapp from "./images/whatsapp.png"
-import instagram from "./images/instagram.png"
-import gmail from "./images/gmail.png"
+import facebook from "./images/facebook.png";
+import whatsapp from "./images/whatsapp.png";
+import instagram from "./images/instagram.png";
+import gmail from "./images/gmail.png";
+import React, { useState } from 'react';
 
 function Order() {
+  const [count, setCount] = useState(1);
+
+  const handleDecrease = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
+  const handleIncrease = () => {
+    setCount(count + 1);
+  };
+
+
   return (
     <>
       <div className="navbar-container">
@@ -38,7 +51,21 @@ function Order() {
       <p className="Img-desc"> Black Jacket</p>
       <div className="order-flex">
       <div className="counter-order">
-        <Counter />
+
+
+      <div className="count-button">
+      <p className="borderrA">
+      <button className="count-button__decrease" onClick={handleDecrease}>
+        -
+      </button>
+      <span className="count-button__quantity">{count}</span>
+      <button className="count-button__increase" onClick={handleIncrease}>
+        +
+      </button>
+      </p>
+    </div>
+     
+
       </div>
       <img className="del-icon" src={del} alt="" />
       <p className="order-price">$12.1</p>
@@ -54,7 +81,18 @@ function Order() {
       <p className="Img-desc"> Black Jacket</p>
       <div className="order-flex">
       <div className="counter-order">
-        <Counter />
+      <div className="count-button">
+      <p className="borderrA">
+      <button className="count-button__decrease" onClick={handleDecrease}>
+        -
+      </button>
+      <span className="count-button__quantity">{count}</span>
+      <button className="count-button__increase" onClick={handleIncrease}>
+        +
+      </button>
+      </p>
+    </div>
+        
       </div>
       <img className="del-icon" src={del} alt="" />
       <p className="order-price">$12.1</p>
