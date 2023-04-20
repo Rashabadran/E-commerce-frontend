@@ -1,49 +1,69 @@
 
 import './Product.css';
-import Slideshow from "./SlideShow.jsx";
 import React, { useState } from 'react';
+import axios from 'axios'
+import { useEffect } from 'react'
+import { Carousel } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Product() {
 
   const [isActive, setIsActive] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [data, setData] = useState({});
+  const [sizes, setSizes] = useState([]);
+  const [colors, setColors] = useState([]);
+  const [images, setImages] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-  const [Sizes, setSizes] = useState();
+  const [productId, setProductId] = useState('643ff2e94f3494a7e08b898f');
   
-  const sizes = [
-    { name: 'S', id: 1 },
-    { name: 'M', id: 2 },
-    { name: 'L', id: 3 },
-    { name: 'XL', id: 4 },
-    { name:'XXL', id: 5 },
-  ];
-
-
-  const colors = [
-    { name: 'Black', id: 1 },
-    { name: 'Red', id: 2 },
-    { name: 'Blue', id: 3 },
-    { name: 'White', id: 4 },
-    { name:'Green', id: 5 },
-  ];
-
-  const images = [
-  "https://m.media-amazon.com/images/I/610DOILk1jL._AC_UL1500_.jpg",
-  "https://media.istockphoto.com/id/1210106212/photo/black-jacket-and-t-shirt-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=N1PmQECJcxIV9gF1JI2TTpZdhNpGmnQHCpDBjS2Vouk=",
-  "https://img.freepik.com/premium-photo/mens-black-leather-jacket-isolated-white-background_125604-204.jpg",
-];
-
    
 
+ useEffect(() => {
+    loadSingleProduct();
+  }, [productId]);
 
-  const sizeListItems = sizes.map(size =>
-    <button onClick={() => handleClick(size.id)}
-     style={{ backgroundColor: isClicked ? 'black' : 'white',color: isClicked ? 'white' : 'black'}} className="sizeDetailsName" key={size.id}>{size.name}</button>
-  );
+  useEffect(() => {
+    setSizes(data.size || []);
+  }, [data.size]);
+
+    useEffect(() => {
+    setColors(data.color || []);
+  }, [data.color]);
+
+   useEffect(() => {
+    setImages(data.image || []);
+  }, [data.image]);
+  
+
+  const loadSingleProduct = async () => {
+    const res = await axios.get(`http://localhost:3030/product/productByID/${productId}`);
+    console.log(res.data);
+    setData(res.data);
+  };
+
+  
+
+  const sizeListItems = sizes.map((sizes) => (
+    <button
+     
+      
+      className="sizeDetailsName"
+      key={sizes.id}
+    >
+      {sizes}
+    </button>
+  ));
+
+ 
+
 
   const colorListItems = colors.map(colors =>
-    <button  onClick={() => handleClick(colors.id)}
-     style={{ backgroundColor: isClicked ? 'black' : 'white',color: isClicked ? 'white' : 'black'}} className="sizeDetailsName " key={colors.id}>{colors.name}</button>
+    <button  
+  
+     className="sizeDetailsName " key={colors.id}>
+     {colors}
+     </button>
   );
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -56,30 +76,35 @@ function Product() {
   };
  
 
-  function handleClick(id) {
-    setIsClicked(!isClicked);
-    const newSizes = sizes.map(size =>
-    size.id === id ? { ...size, selected: !size.selected } : size
-  );
-  setSizes(newSizes);
-  }
+ 
 
   return (
     <div className="imagesProduct">
+  
    
-     
-  <Slideshow
-    images={images}
-    imageHeight={800}
-    imageWidth={700}
-    className="imageProductResize"
-    style={{ border: '3px solid black'}}
-  />
+ 
+
+   <Carousel interval={null} >
+      {images.map((image, index) => (
+        <Carousel.Item key={index} 
+         prevIcon={<span className="carousel-control-prev-icon" aria-hidden="true" />}
+      nextIcon={<span className="carousel-control-next-icon" aria-hidden="true" />}>
+          <img
+        
+            src={image.url}
+             imageHeight={800}
+            imageWidth={1000}
+            className="imageProductResize"
+            style={{ border: '3px solid black'}}
+          />
+        </Carousel.Item>
+      ))}
+    </Carousel>
   
 
     <div className="details">
-        <p className="title">Men Casual Summer Shirt</p>
-        <p className="price">$10.00 USD</p>
+        <p className="title">{data.title}</p>
+        <p className="price">${data.price} USD</p>
         <p className="size">Size</p>
         <p className="sizeDetails">
         {sizeListItems}
@@ -102,7 +127,7 @@ function Product() {
     </div>
     <div className='description'>
       <p className="descriptionTitle">Description</p>
-      <ul className='descriptionDetails'><li>100% Cotton</li><li>20%polyester</li></ul>
+      <ul className='descriptionDetails'><li>{data.Description}</li></ul>
     </div>
     <div>
       <button className='cartButton'> Add to cart</button>

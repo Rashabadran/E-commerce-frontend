@@ -18,7 +18,7 @@ const Slideshow = ({ images, imageHeight, imageWidth ,transitionTime, placeholde
 
   const slides = images.map((image, index) => (
     <CSSTransition key={index} timeout={transitionTime * 1000} classNames="slide">
-      <img src={image} alt={`Slide ${index + 1}`} height={imageHeight} width={imageWidth} />
+      <img src={image.url} alt={`Slide ${index + 1}`} height={imageHeight} width={imageWidth} />
     </CSSTransition>
   ));
 
@@ -31,7 +31,7 @@ const Slideshow = ({ images, imageHeight, imageWidth ,transitionTime, placeholde
   };
 
   return (
-    <div className="slideshow-container">
+    <div className="slideshow-containerss">
       <div className="slideshow-arrow slideshow-arrow-left" onClick={previousSlide}>
         &lt;
       </div>

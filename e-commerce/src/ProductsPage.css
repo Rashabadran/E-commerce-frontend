@@ -39,3 +39,38 @@ font-family: "Times New Roman", Times, serif;
 font-size: 24px;
 text-align: center;
 }
+.sizeDetailsName{
+    background-color: white;
+}
+
+
+.my-carousel {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    color: black;
+    /* set the arrow color to black */
+    font-size: 2rem;
+}
+
+.carousel-control-prev-icon:before {
+    content: "<";
+}
+
+.carousel-control-next-icon:before {
+    content: ">";
+}
+
+.imageProductResize{
+    width:800px;
+    height:800px;
+}
