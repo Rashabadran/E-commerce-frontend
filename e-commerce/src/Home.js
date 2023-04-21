@@ -12,13 +12,23 @@ import facebook from "../src/images/facebook.png"
 import whatsapp from "../src/images/whatsapp.png"
 import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
-
+import axios from 'axios';
 import Arrow from "../src/images/Arrow.png"
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 function App() {
 
+const [categoryFetching,setCategory]=useState([])
+const [images,setimages]=useState({})
+const loadCategories = async () => {
+    const res = await axios.get('http://localhost:3030/cat/');
+    setCategory(res.data);
+  };
+  
 
-
-
+  useEffect(() => {
+    loadCategories();
+  }, []);
 
   let currentSlide = 0;
 
@@ -138,14 +148,16 @@ function App() {
 
 
           <div className='cover'>
+      
             <div className='scroll-devs'>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-            </div>
+  { categoryFetching.filter(item => item.season === "winter").map((item, index) => (
+    <div key={item._id} className='child'>
+    <Link to={`/ProductsPage/${item._id}`}>
+      <img className='child-image' src={item.image.url} alt={item.name} /></Link>
+      <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+    </div>
+  ))}
+</div>
 
 
 
@@ -179,17 +191,19 @@ function App() {
 
             <button className='leftarrow' onClick={() => scrollrsec()}><img className='arrows-heights' src={leftarrow} /> </button>
           </div>
-
+           
 
           <div className='cover'>
             <div className='scroll-devos'>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-              <div className='child' ><img className='child-image' src={jacket} alt="" /> <button className='child-image-button'>Jackets <img src={Arrow} alt="" srcset="" /> </button></div>
-            </div>
+             
+            {categoryFetching.filter(item => item.season === "summer").map((item, index) => (
+          <div key={index} className='child'>
+              <Link to={`/ProductsPage/${item._id}`}>
+      <img className='child-image' src={item.image.url} alt={item.name} /></Link>
+            <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+          </div>
+        ))}
+                        </div>
 
 
 

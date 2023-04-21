@@ -5,6 +5,11 @@
   font-weight: bolder;
 }
 
+.allProductsPage{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .card-list {
   border-radius: 10px;
   display: grid;
@@ -36,7 +41,7 @@
   /* padding-left: 20px; */
   font-family: "Times New Roman", Times, serif;
   font-size: 24px;
-  /* text-align: center; */
+   /* text-align: center;  */
 }
 
 .allProductsPrice {
