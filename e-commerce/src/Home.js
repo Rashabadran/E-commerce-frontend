@@ -100,9 +100,9 @@ const loadCategories = async () => {
 
         <div className='navigation-buttons'>
 
-          <p className='nav-buttons'>Home</p>
-          <p className='nav-buttons'>About Us</p>
-          <p className='nav-buttons'>Collection</p>
+          <a href="/Home"> <p className='nav-buttons'>Home</p></a>
+          <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
+          <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
 
         </div>
         <div className='last-header'>
@@ -138,7 +138,7 @@ const loadCategories = async () => {
 
       <div className='winter-collection'>
 
-        <p className='heading-collection'>winter collection </p>
+        <p className='heading-collection' id="winterCollection">winter collection </p>
 
         <div className='scroll-collection'>
           <div className='parent-arrow'>
@@ -150,8 +150,9 @@ const loadCategories = async () => {
           <div className='cover'>
       
             <div className='scroll-devs'>
-  { categoryFetching.filter(item => item.season === "winter").map((item, index) => (
+  { categoryFetching.filter(item => item.season === "winter" || item.season==="Winter").map((item, index) => (
     <div key={item._id} className='child'>
+    { item.sale === 0 ? null : <div className="discount">{item.sale}%</div>}
     <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
       <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
@@ -184,7 +185,7 @@ const loadCategories = async () => {
 
       <div className='winter-collection'>
 
-        <p className='heading-collection'>Summer collection </p>
+        <p className='heading-collection' id="summerCollection">Summer collection </p>
 
         <div className='scroll-collection'>
           <div className='parent-arrow'>
@@ -198,6 +199,8 @@ const loadCategories = async () => {
              
             {categoryFetching.filter(item => item.season === "summer").map((item, index) => (
           <div key={index} className='child'>
+         
+           { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
               <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
             <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
@@ -228,8 +231,8 @@ const loadCategories = async () => {
 
       <div className='pablo-description'>
 
-        <p className='description-header'>PABLO</p>
-        <p className='description-description'>Welcome to PABLO, your one-stop shop for stylish and affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion, including casual wear, business attire, and formal wear. </p>
+        <p className='description-header' >PABLO</p>
+        <p className='description-description' id="about-Us">Welcome to PABLO, your one-stop shop for stylish and affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion, including casual wear, business attire, and formal wear. </p>
 
 
         <div className='description-butt'>
@@ -246,10 +249,10 @@ const loadCategories = async () => {
 
         <div className='footer-first'>
 
-          <p className='footer-first-p'>Home </p>
-          <p className='footer-first-p'> About Us </p>
-          <p className='footer-first-p'>Winter Collection </p>
-          <p className='footer-first-p'>Summer Collection </p>
+          <a href="/Home"><p className='footer-first-p'>Home </p></a>
+          <a href="/Home/#about-Us"><p className='footer-first-p' > About Us </p></a>
+          <a href="/Home/#winterCollection"><p className='footer-first-p' >Winter Collection </p></a>
+          <a href="/Home/#summerCollection"><p className='footer-first-p' >Summer Collection </p></a>
 
 
 

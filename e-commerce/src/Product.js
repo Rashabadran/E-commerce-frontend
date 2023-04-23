@@ -10,6 +10,7 @@ import facebook from "../src/images/facebook.png"
 import whatsapp from "../src/images/whatsapp.png"
 import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
+import { Link } from 'react-router-dom';
 
 function Product() {
 
@@ -96,9 +97,9 @@ function Product() {
 
         <div className='navigation-buttons'>
 
-          <p className='nav-buttons'>Home</p>
-          <p className='nav-buttons'>About Us</p>
-          <p className='nav-buttons'>Collection</p>
+          <a href="/Home"><p className='nav-buttons'>Home</p></a>
+          <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
+           <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
 
         </div>
         <div className='last-header'>
@@ -120,14 +121,21 @@ function Product() {
               imageHeight={800}
               imageWidth={1000}
               className="imageProductResize"
-              style={{ border: '3px solid black' }}
             />
           </Carousel.Item>
         ))}
       </Carousel>
       <div className="details">
         <p className="title">{data.title}</p>
-        <p className="price">${data.price} USD</p>
+        <div className="price">
+        
+            {data.price == data.priceAfterDiscount  ? <h3>{data.price}$</h3> : 
+              <div className="price"> 
+                <h3>{ data.priceAfterDiscount}$</h3> 
+                <h4>{data.price}$</h4>
+              </div>
+            }
+           </div>
         <p className="size">Size</p>
         <p className="sizeDetails">
           {sizeListItems}
@@ -162,10 +170,10 @@ function Product() {
 
         <div className='footer-first'>
 
-          <p className='footer-first-p'>Home </p>
-          <p className='footer-first-p'> About Us </p>
-          <p className='footer-first-p'>Winter Collection </p>
-          <p className='footer-first-p'>Summer Collection </p>
+           <a href="/Home"><p className='footer-first-p'>Home </p></a>
+           <a href="/Home/#about-Us"><p className='footer-first-p'> About Us </p></a>
+           <a href="/Home/#winterCollection"><p className='footer-first-p'>Winter Collection </p></a>
+           <a href="/Home/#summerCollection"><p className='footer-first-p'>Summer Collection </p></a>
 
 
 

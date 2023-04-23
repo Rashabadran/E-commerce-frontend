@@ -55,9 +55,9 @@ function ProductsPage() {
 
         <div className='navigation-buttons'>
 
-          <p className='nav-buttons'>Home</p>
-          <p className='nav-buttons'>About Us</p>
-          <p className='nav-buttons'>Collection</p>
+          <a href="/Home"> <p className='nav-buttons'>Home</p></a>
+           <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
+           <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
 
         </div>
         <div className='last-header'>
@@ -75,7 +75,7 @@ function ProductsPage() {
       <div className="mainTitleProduct">{title}</div>
       <div className="card-list">
         {cardDatas.map((item, index) => (
-          <div key={item._id}>
+          <div className='product-card' key={item._id}>
             <Link to={`/Product/${item._id}`}>
               <img
                 className="allProductsImage"
@@ -83,8 +83,17 @@ function ProductsPage() {
                 alt={item.title}
               />
             </Link>
+            <div className="backcolorOfProduc">
             <p className="allProductsTitle">{item.title}</p>
-            <p className="allProductsPrice">$ {item.price} USD</p>
+            <div className="price">
+            {item.price == item.priceAfterDiscount  ? <h3>{item.price}$</h3> : 
+              <div className="price"> 
+                <h3>{ item.priceAfterDiscount}$</h3> 
+                <h4>{item.price}$</h4>
+              </div>
+            }
+           </div>
+           </div>
           </div>
         ))}
       </div>
@@ -93,10 +102,10 @@ function ProductsPage() {
 
         <div className='footer-first'>
 
-          <p className='footer-first-p'>Home </p>
-          <p className='footer-first-p'> About Us </p>
-          <p className='footer-first-p'>Winter Collection </p>
-          <p className='footer-first-p'>Summer Collection </p>
+         <Link to={`/Home`}> <p className='footer-first-p'>Home </p></Link>
+          <a href="/Home/#about-Us"><p className='footer-first-p'> About Us </p></a>
+          <a href="/Home/#winterCollection"><p className='footer-first-p' >Winter Collection </p></a>
+          <a href="/Home/#summerCollection"><p className='footer-first-p' >Summer Collection </p></a>
 
 
 
