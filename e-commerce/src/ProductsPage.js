@@ -79,7 +79,7 @@ function ProductsPage() {
             <Link to={`/Product/${item._id}`}>
               <img
                 className="allProductsImage"
-                src={cardImages[index]?.url}
+                src={cardImages &&cardImages[index]?.url}
                 alt={item.title}
               />
             </Link>

@@ -14,12 +14,11 @@ import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
 import axios from 'axios';
 import Arrow from "../src/images/Arrow.png"
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
 function App() {
 
 const [categoryFetching,setCategory]=useState([])
-const [images,setimages]=useState({})
 const loadCategories = async () => {
     const res = await axios.get('http://localhost:3030/cat/');
     setCategory(res.data);
@@ -31,29 +30,43 @@ const loadCategories = async () => {
   }, []);
 
   let currentSlide = 0;
+  
+  const imagesss=[
+    {src:slider2, alt:"Image 1"},
+    {src:slider3, alt:"Image 2"},
+    {src:slider4, alt:"Image 3"}
+  ]
+const delay = 2500;
 
-  function startSlider() {
-    let imageCount = document.querySelectorAll(".imgg");
 
-    if (imageCount.length === 0) {
-      imageCount = document.querySelectorAll(".imgg");
-      images.style.transform = `translateX(0px)`;
-      return;
-    }
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef(null);
 
-    let images = document.querySelector("ul");
-    images.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-    if (currentSlide === imageCount.length - 1) {
-      currentSlide = 0;
-    } else {
-      currentSlide++;
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
   }
 
-  setInterval(() => {
-    startSlider();
-  }, 5000);
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setIndex((prevIndex) =>
+          prevIndex === imagesss.length - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
+
+
+
+  
+
 
 
 
@@ -100,9 +113,9 @@ const loadCategories = async () => {
 
         <div className='navigation-buttons'>
 
-          <a href="/Home"> <p className='nav-buttons'>Home</p></a>
-          <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
-          <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
+          <a href="/Home "> <p className='nav-buttons '>Home</p></a>
+          <a href="/Home/#about-Us"><p className='nav-buttons '>About Us</p></a>
+          <a href="/Home/#winterCollection"><p className='nav-buttons '>Collection</p></a>
 
         </div>
         <div className='last-header'>
@@ -118,20 +131,34 @@ const loadCategories = async () => {
 
 
 
-
-      <div className='slideshow-container'>
-
-        <ul>
-          <li><img className='imgg' src={slider1} alt="image one" /></li>
-          <li><img className='imgg' src={slider2} alt="image two" /></li>
-          <li><img className='imgg' src={slider3} alt="image three" /></li>
-
-          <li><img className='imgg' src={slider4} alt="image four" /></li>
-        </ul>
-
-
-
+       <div className="slideshow">
+      <div
+        className="slideshowSlider"
+        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+      >
+        {imagesss.map((image, index) => (
+          <img
+            key={index}
+            src={image.src}
+            alt={image.alt}
+            className="slideP"
+          />
+        ))}
       </div>
+
+      <div className="slideshowDots">
+        {imagesss.map((_, idx) => (
+          <div
+            key={idx}
+            className={`slideshowDot${index === idx ? " active" : ""}`}
+            onClick={() => {
+              setIndex(idx);
+            }}
+          ></div>
+        ))}
+      </div>
+    </div>
+      
 
 
 
@@ -152,7 +179,7 @@ const loadCategories = async () => {
             <div className='scroll-devs'>
   { categoryFetching.filter(item => item.season === "winter" || item.season==="Winter").map((item, index) => (
     <div key={item._id} className='child'>
-    { item.sale === 0 ? null : <div className="discount">{item.sale}%</div>}
+    { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
     <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
       <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
@@ -249,10 +276,10 @@ const loadCategories = async () => {
 
         <div className='footer-first'>
 
-          <a href="/Home"><p className='footer-first-p'>Home </p></a>
-          <a href="/Home/#about-Us"><p className='footer-first-p' > About Us </p></a>
-          <a href="/Home/#winterCollection"><p className='footer-first-p' >Winter Collection </p></a>
-          <a href="/Home/#summerCollection"><p className='footer-first-p' >Summer Collection </p></a>
+          <a href="/Home"><p className='footer-first-p '>Home </p></a>
+          <a href="/Home/#about-Us"><p className='footer-first-p ' > About Us </p></a>
+          <a href="/Home/#winterCollection"><p className='footer-first-p '  >Winter Collection </p></a>
+          <a href="/Home/#summerCollection"><p className='footer-first-p ' >Summer Collection </p></a>
 
 
 

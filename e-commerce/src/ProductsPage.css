@@ -47,7 +47,7 @@
 .allProductsPage{
   margin-top: 50px;
   margin-bottom: 50px;
-  
+  min-height: 100dvh;
 }
 
 .card-list {

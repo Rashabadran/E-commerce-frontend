@@ -1,3 +1,55 @@
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+
+.slideP {
+  display: inline-block;
+
+  height: 400px;
+  width: 100%;
+  
+}
+a {
+  color:black!important;
+}
+
+/* Buttons */
+
+.slideshowDots {
+  text-align: center;
+  
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  
+  cursor: pointer;
+  margin: 15px 7px 0px;
+
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color:black;
+}
+
+
+
+
+
+
+
+
 .navbar-container {
     width: 100%;
     background-color: #000000;
@@ -235,6 +287,7 @@
   }
   
   .footer {
+    
     height: 20vw;
     background-color: black;
     display: flex;

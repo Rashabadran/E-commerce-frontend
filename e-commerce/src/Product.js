@@ -11,20 +11,64 @@ import whatsapp from "../src/images/whatsapp.png"
 import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
 import { Link } from 'react-router-dom';
+import emailjs from "emailjs-com";
+
 
 function Product() {
+ 
 
+  
   const [isActive, setIsActive] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [data, setData] = useState({});
   const [sizes, setSizes] = useState([]);
+  const [valueSizes, setValueSizes] = useState([]);
   const [colors, setColors] = useState([]);
+  const [valueColors, setValueColors] = useState([]);
   const [images, setImages] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   const productId = useParams();
   // const { productId } = match.params;
-   {console.log(productId,"raneem")}
+   
 
+
+// Get all size and color buttons
+const sizeButtons = document.querySelectorAll('.sizeDetailsName');
+const colorButtons = document.querySelectorAll('.colorDetailsName');
+
+// Add click event listeners to all buttons
+sizeButtons.forEach(button => button.addEventListener('click', handleButtonClick));
+colorButtons.forEach(button => button.addEventListener('click', handleButtonClick));
+
+function handleButtonClick(event) {
+  const button = event.target;
+  const buttonGroup = button.parentNode;
+
+  // Remove "selected" class from all buttons in the group
+  buttonGroup.querySelectorAll('.selected').forEach(selectedButton => {
+    selectedButton.classList.remove('selected');
+  });
+
+  // Add "selected" class to the clicked button
+  button.classList.add('selected');
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   useEffect(() => {
     loadSingleProduct();
   }, [productId]);
@@ -45,26 +89,49 @@ function Product() {
   const loadSingleProduct = async () => {
     try {
       const res = await axios.get(`http://localhost:3030/product/productByID/${productId.productId}`);
-      console.log(res.data);
+     
       setData(res.data);
     } catch (error) {
       console.error(error);
     }
   };
 
+
+   function handleColorClick(event) {
+    {console.log("colorr",valueColors)}
+    setValueColors(event.target.value);
+    
+  }
+  
+   function handleSizeClick(event) {
+    {console.log("size",valueSizes)}
+    setValueSizes(event.target.value);
+    
+    
+
+  }
+
+
   const sizeListItems = sizes.map((size) => (
     <button
       className="sizeDetailsName"
       key={size.id}
+      value={size}
+      onClick={handleSizeClick}
     >
       {size}
+      
+      
     </button>
   ));
 
+  
   const colorListItems = colors.map((color) =>
     <button
-      className="sizeDetailsName"
+      className="colorDetailsName"
       key={color.id}
+      value={color}
+      onClick={handleColorClick}
     >
       {color}
     </button>
@@ -80,10 +147,7 @@ function Product() {
     setQuantity(quantity + 1);
   };
 
-  console.log(data);
-  console.log(sizes);
-  console.log(colors);
-  console.log(images);
+ 
 
   return (
     <div className="imagesProduct">
@@ -141,7 +205,7 @@ function Product() {
           {sizeListItems}
         </p>
         <p className="size">Color</p>
-        <p className="sizeDetails">
+        <p className="colorDetails">
         {colorListItems}
         </p>
       <div className="quantity-button">
