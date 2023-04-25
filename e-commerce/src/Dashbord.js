@@ -218,6 +218,12 @@ const [category_id,setcategory_id]=useState(null)
                 <div>
                     <img className='logoimg' src={logo} alt="" />
                 </div>
+                <div>
+                <a href="/Home "><p className="nav-buttons">Winter Categories</p></a>
+                </div>
+                <div>
+                <a href="/Order "><p className="nav-buttons">Orders</p></a>
+                </div>
             </div>
   
             <div className='headers'>
