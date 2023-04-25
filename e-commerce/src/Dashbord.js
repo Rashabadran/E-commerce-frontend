@@ -10,7 +10,7 @@ import { useEffect } from "react"
 
 function Dashboard() {
 
-
+const [category_id,setcategory_id]=useState(null)
     const [categories, setcategories] = useState(null)
     const [Products, setProducts] = useState(null)
     const [catname, setCatname] = useState('')
@@ -20,14 +20,28 @@ function Dashboard() {
 
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
-    const [size, setSize] = useState('')
-    const [color, setColor] = useState('')
+
+
+
+
+    const [size, setSize] = useState([])
+    const [sizearray, setsizearray] = useState([]);
+
+
+    const [color, setColor] = useState([])
+    const [colorarray, setColorarray] = useState([])
+
+    const [Description, setDescription] = useState('')
+    const [pimage, setPimage] = useState('')
+    const [pimage2, setPimage2] = useState('')
+    const [pimage3, setPimage3] = useState('')
+    const [threeimages,setthreeimages]=useState([]);
 
     useEffect(() => {
 
         getCategories()
 
-    }, []);
+    }, [Description,pimage,color,colorarray,size,sizearray,category_id,threeimages ]);
 
     const getProducts = async (cat_id) => {
         const response = await axios.get(`http://localhost:3030/product/productbyCategory/${cat_id}`);
@@ -41,7 +55,7 @@ function Dashboard() {
 
 
     const getCategories = async () => {
-        const response = await axios.get(`http://localhost:3030/cat`);
+        const response = await axios.get(`http://localhost:3030/cat/category/summer`);
         const categories = response.data.map((category) => ({
             id: category._id,
             name: category.name,
@@ -55,6 +69,19 @@ function Dashboard() {
         console.log(e.target.files)
         setImage(e.target.files[0])
     }
+
+ 
+        function handlePimage(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => {
+              const imgData = reader.result;
+              setthreeimages([...images, imgData]);
+            };
+          }
+    
+ 
 
 
     const addCategory = async () => {
@@ -73,33 +100,64 @@ function Dashboard() {
     
             console.log(formData);
     } 
+
+
+
+
+
+
+
+
+    const addProduct = async () => {
+        const formData= new FormData()
+        formData.append('title', title)
+        formData.append('price', price)
+        formData.append('size', size)
+        formData.append('color', color)
+        formData.append('Description', Description)
+        formData.append('image', threeimages)
+        formData.append('category', category_id)
+
+        
+
+    await  axios.post("http://localhost:3030/product/product", formData)
+
+  
+          console.log("success product amira");
+  } 
+
+
+
+
         
     
 
 
 
-    const handleitemtags = (event) => {
-        setitemtags([...itemtags, event.target.value]);
-    }
-    const [itemtags, setitemtags] = useState([])
-    // const dummyData = [
-    //     {
-    //         id: 1,
-    //         title: 'First Collapsible Item',
-    //         content: 'Product 1 ',
-    //     },
-    //     {
-    //         id: 2,
-    //         title: 'Second Collapsible Item',
-    //         content: 'This is the second collapsible item content.',
-    //     },
-    //     {
-    //         id: 3,
-    //         title: 'Third Collapsible Item',
-    //         content: 'This is the third collapsible item content.',
+  const handlesize = (event) => {
+    const sizes = event.target.value.split(",");
+    setSize(sizes);
+    setsizearray([...sizearray, ...sizes]);
+  };
+  
 
-    //     },
-    // ];
+
+
+
+  const handlecolor = (event) => {
+    const colors = event.target.value.split(",");
+    setColor(colors);
+    setColorarray([...colorarray, ...colors]);
+  };
+  
+
+
+
+
+
+
+
+ 
 
 
 
@@ -168,26 +226,7 @@ function Dashboard() {
                         <p className='summer-parag'> Summer categories</p>
                     </div>
 
-                    <div className='firstdiv'>
-                        <div className="makesaleby">
-                            <div className='makesaleby-firstinside'>
-                                <p>
-                                    Make Sale by :
-                                </p>
-                                <input className='input-sale' type="text" placeholder='100%' />
-                            </div>
-                            <div className='submit-sale'>
-                                <button className='submit-salebutton'>Submit</button>
-                            </div>
-                        </div>
-                        <div>
-                            Sale ON
-                            <label className="switch">
-                                <input type="checkbox" />
-                                <span className="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
+                  
                 </div>
                 <div className='newcategory'>
                     <p> Add New  Category</p>
@@ -205,7 +244,7 @@ function Dashboard() {
                             trigger={item.name}
                             key={item.id}
                             open={index === openIndex}
-                            onOpening={() => { getProducts(item.id); setOpenIndex(index) }}
+                            onOpening={() => { setcategory_id(item.id);getProducts(item.id); setOpenIndex(index) }}
                             onClosing={() => setOpenIndex(-1)}
                         >
                             <div className='flex-row' >
@@ -315,28 +354,33 @@ function Dashboard() {
 
                 <h1>Add Products </h1>
 
-                <label for="email"><b>Title</b></label>
-                <input type="text" placeholder="Enter Email" name="email" required />
+                <label for="text"><b>Title</b></label>
+                <input type="text" placeholder="Enter the product name" name="title" required  onChange={e =>setTitle(e.target.value)}/>
                 <br />
 
                 <label for="psw"><b>Price</b></label>
-                <input type="text" placeholder="Enter Password" name="psw" required />
+                <input type="text" placeholder="Enter price" name="psw" required onChange={e =>setPrice(e.target.value)}/>
                 <br />
 
 
 
                 <label className="textform" >size</label><br />
-                <input type="text" value={itemtags} onChange={handleitemtags} />
+                <input type="text" value={size} onChange={handlesize} />
                 <br />
 
                 <label className="textform" >color</label><br />
-                <input type="text" value={itemtags} onChange={handleitemtags} />
+                <input type="text"    value={color} onChange={handlecolor} />
                 <br />
 
-                <div>
-                    <label htmlFor="images">Choose Images:</label><br />
-                    <input type="file" id="images" name="images" /><br />
+                <label className="textform" >Description</label><br />
+                <input type="text"  onChange={e =>setDescription(e.target.value)}/>
+                <br />
 
+
+                <div>
+                    <label htmlFor="images" >Choose Images:</label><br />
+                    <input type="file" id="images" name="file" onChange={handlePimage}/><br />
+               
                 </div>
 
 
@@ -344,8 +388,8 @@ function Dashboard() {
 
 
 
-                <button type="submit" className="btn">Submit</button>
-                <button type="button" className="btn cancel" onClick={() => CloseAddProducts()}>Close</button>
+                <button type="submit" className="btn" onClick={()=>{addProduct();CloseAddProducts()}}>Submit</button>
+                <button type="button" className="btn cancel" onClick={() => {CloseAddProducts()}}>Close</button>
 
             </div>
 

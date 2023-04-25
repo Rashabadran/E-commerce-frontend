@@ -1,4 +1,117 @@
+
+/* Header styles */
 .headers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .parent-headder {
+    display: flex;
+    align-items: center;
+  }
+  
+  .summer-border {
+    border: 1px solid black;
+    padding: 5px;
+  }
+  
+  .summer-parag {
+    margin: 0;
+  }
+  
+  .newcategory {
+    display: flex;
+    align-items: center;
+  }
+  
+  .newcategory p {
+    margin: 0;
+    margin-right: 10px;
+  }
+  
+  .addbutton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .addbutton img {
+    height: 20px;
+    width: 20px;
+  }
+  
+  /* Main body styles */
+  .main-body-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .collaps {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .collaps-title {
+    background-color: #eee;
+    margin-bottom: 10px;
+  }
+  
+  .collaps-title p {
+    margin: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .background-none {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .img-adding-button-contet {
+    height: 20px;
+    width: 20px;
+  }
+  
+  .content-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .content-dashboard .parag-dash-content {
+    margin: 0;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .content-dashboard .flex-content-end button {
+    margin-left: 10px;
+  }
+  
+  .content-dashboard .flex-content-end img {
+    height: 20px;
+    width: 20px;
+  }
+  
+
+
+/* .headers {
     width: 60%;
     margin-left: 20%;
     padding-top: 2vw;
@@ -67,7 +180,7 @@
 
 
 
-.switch {
+/* .switch {
     position: relative;
     display: inline-block;
     width: 60px;
@@ -78,9 +191,9 @@
     opacity: 0;
     width: 0;
     height: 0;
-}
+} */
 
-.slider {
+/* .slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -102,8 +215,8 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-}
-
+} */
+/* 
 input:checked+.slider {
     background-color: #2196F3;
 }
@@ -116,10 +229,10 @@ input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-}
+} */
 
 /* Rounded sliders */
-.slider.round {
+/* .slider.round {
     border-radius: 34px;
 }
 
@@ -193,7 +306,7 @@ input:checked+.slider:before {
 .background-none {
     background: none;
     border: none;
-}
+}  */
 
 
 
@@ -208,13 +321,82 @@ input:checked+.slider:before {
 
 
 
+.form-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 
+  }
+  
+  .form-popup h1 {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 24px;
+  }
+  
+  .form-popup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-popup input[type="text"], .form-popup input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+  }
+  
+  .form-popup input[type="file"] {
+    margin-bottom: 20px;
+  }
+  
+  .form-popup .textform {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .form-popup .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(247, 247, 6);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .form-popup .btn:hover {
+    background-color: yellow;
+  }
+  
+  .form-popup .cancel {
+    background-color: #070707;
+  }
+  
+  .form-popup .cancel:hover {
+    background-color: #0a0a0a;
+  }
+  
 
 /* formadd product popup  */
 
 
 
-
+/* 
 .form-popup {
     display: none;
     position: fixed;
@@ -231,31 +413,31 @@ input:checked+.slider:before {
 }
 
 /* Add styles to the form container */
-.form-container {
+/* .form-container {
     max-width: 300px;
     padding: 10px;
     background-color: white;
 }
 
 /* Full-width input fields */
-.form-container input[type=text],
+/* .form-container input[type=text],
 .form-container input[type=password] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
     border: none;
     background: #f1f1f1;
-}
+} */
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus,
+/* .form-container input[type=text]:focus,
 .form-container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
-}
+} */
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+/* .form-container .btn {
     background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
@@ -264,15 +446,15 @@ input:checked+.slider:before {
     width: 100%;
     margin-bottom: 10px;
     opacity: 0.8;
-}
+} */
 
 /* Add a red background color to the cancel button */
-.form-container .cancel {
+/* .form-container .cancel {
     background-color: red;
-}
+} */
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover,
+/* .form-container .btn:hover,
 .open-button:hover {
     opacity: 1;
-}
+}   */
