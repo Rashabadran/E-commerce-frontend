@@ -108,24 +108,16 @@ function Dashboard() {
   };
 
   const putCategory = async () => {
-    // e.preventDefault();
+    
 
-    // const formData = new FormData();
-    // formData.append("name", Newcatname);
-    // formData.append("season", Newseason);
-    // formData.append("sale", Newsale);
-    // formData.append("image", Newimage);
-
-    const data = { sale: Newsale};
+   
 
     await axios
-      .put(`http://localhost:3030/cat/6448eb53b3b6faae4b44385d`, data, {
-        headers: {
-          "Content-Type": "multipart/x-www-form-urlencoded",
-        },
+      .put(`http://localhost:3030/cat/6448eb53b3b6faae4b44385d`, {
+        sale: Newsale
       })
       
-        console.log(data);
+        
       
     }
       
