@@ -20,6 +20,7 @@ function Product() {
   
   const [isActive, setIsActive] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [valueQuantity,setValueQuantity]=useState();
   const [data, setData] = useState({});
   const [sizes, setSizes] = useState([]);
   const [valueSizes, setValueSizes] = useState([]);
@@ -28,6 +29,8 @@ function Product() {
   const [images, setImages] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
   const productId = useParams();
+  const [title,setTitle]=useState("");
+  const [price,setPrice]=useState();
   // const { productId } = match.params;
    
 
@@ -84,6 +87,35 @@ function handleButtonClick(event) {
   useEffect(() => {
     setImages(data.image || []);
   }, [data.image]);
+
+
+  const saveToLocalStorage = () => {
+  // Get the existing cart items from local storage
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  // Check if the product is already in the cart
+  const existingCartItemIndex = cartItems.findIndex((item) => item._id === data._id);
+
+  if (existingCartItemIndex !== -1) {
+    // If the product is already in the cart, increment its quantity
+    cartItems[existingCartItemIndex].quantity += quantity;
+  } else {
+    // If the product is not in the cart, add it as a new item
+    cartItems.push({
+      _id: data._id,
+      title: data.title,
+      price: data.price,
+      priceAfterDiscount: data.priceAfterDiscount,
+      size: valueSizes,
+      color: valueColors,
+      quantity: quantity,
+    });
+  }
+
+  // Save the updated cart items to local storage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+};
+
   
 
   const loadSingleProduct = async () => {
@@ -91,6 +123,8 @@ function handleButtonClick(event) {
       const res = await axios.get(`http://localhost:3030/product/productByID/${productId.productId}`);
      
       setData(res.data);
+
+      {console.log("d",data)}
     } catch (error) {
       console.error(error);
     }
@@ -214,7 +248,7 @@ function handleButtonClick(event) {
       <button className="quantity-button__decrease" onClick={handleDecrease}>
         -
       </button>
-      <span className="quantity-button__quantity">{quantity}</span>
+      <span className="quantity-button__quantity" >{quantity}</span>
       <button className="quantity-button__increase" onClick={handleIncrease}>
         +
       </button>
@@ -225,7 +259,7 @@ function handleButtonClick(event) {
       <ul className='descriptionDetails'><li>{data.Description}</li></ul>
     </div>
     <div>
-      <button className='cartButton'> Add to cart</button>
+      <button className='cartButton' onClick={saveToLocalStorage}> Add to cart</button>
     </div>
     </div>
 

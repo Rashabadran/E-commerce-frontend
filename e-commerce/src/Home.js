@@ -259,13 +259,13 @@ const delay = 2500;
       <div className='pablo-description'>
 
         <p className='description-header' >PABLO</p>
-        <p className='description-description' id="about-Us">Welcome to PABLO, your one-stop shop for stylish and affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion, including casual wear, business attire, and formal wear. </p>
+        <p className='description-description' id="about-Us">Welcome to PABLO, your one-stop shop for stylish and 
+        affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion, 
+        including casual wear, business attire, and formal wear.
+        Pablo also help the customers to find the right clothing and accessories to suit their individual tastes and needs. </p>
 
 
-        <div className='description-butt'>
-
-          <button className='description-buttons'>Read more...</button>
-        </div>
+       
 
       </div>
 
