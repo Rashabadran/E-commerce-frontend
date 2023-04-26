@@ -8,24 +8,45 @@ import whatsapp from "./images/whatsapp.png";
 import instagram from "./images/instagram.png";
 import gmail from "./images/gmail.png";
 import React, { useState, useEffect } from "react";
-
+import emailjs from '@emailjs/browser';
 function Order() {
-  const [count, setCount] = useState(1);
-
-  const handleDecrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+  const sendEmail = () => {
+    emailjs.send('service_phdrfzg', 'template_j3wte84', {
+      to_email: 'badranrasha685@gmail.com',
+      message: 'Hello, this is a static message sent from the Contact Us form.'
+    }, 'bsgzj8RCp8iMedk0g')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
   };
+  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
 
-  const handleIncrease = () => {
-    setCount(count + 1);
-  };
+ function deleteProductFromLocalStorage(id) {
+  const updatedProducts = cartItems.filter((product) => product._id !== id);
+  localStorage.setItem('cartItems', JSON.stringify(updatedProducts));
+}
 
 
-  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-  {console.log("cart",cartItems)}
+function handleProductClick(id) {
+  deleteProductFromLocalStorage(id);
+  const updatedCartItems = cartItems.filter((item) => item._id !== id);
+  setCartItems(updatedCartItems);
+}
+
+
+function clearLocalStorage() {
+  localStorage.clear();
+  window.location.reload();
+}
+
+  
+ 
+  {
+    console.log("cart", cartItems);
+  }
   return (
     <>
       <div className="navbar-container">
@@ -48,36 +69,22 @@ function Order() {
 
       <div className="orders-div">
         <div className="order-style">
-          <div className="order-det">
-            <div className="order-writing">
-              <div className="order-title">
-                <h1>jj</h1>
-              </div>
-              <h3>Size: kk</h3>
-              <h3>Color: kk</h3>
-              <h3>Price: ll$</h3>
-              <div className="quantity">
-                <div className="count-button">
-                  <p className="borderrA">
-                    <button
-                      className="count-button__decrease"
-                      onClick={handleDecrease}
-                    >
-                      -
-                    </button>
-                    <span className="count-button__quantity"> {count}</span>
-                    <button
-                      className="count-button__increase"
-                      onClick={handleIncrease}
-                    >
-                      +
-                    </button>
-                  </p>
+          {cartItems.map((item) => (
+            <div className="order-det" key={item._id}>
+              <div className="order-writing">
+                <div className="order-title">
+                  <h2>{item.title}</h2>
                 </div>
-                <img className="delete-icon" src={del} alt="" />
+                <p>Size: {item.size}</p>
+                <p>Color: {item.color}</p>
+                <p>Price: {item.price}</p>
+                <p>Quantity: {item.quantity}</p>
+                <div className="quantity">
+                <img className="delete-icon" onClick={() => handleProductClick(item._id)} src={del} alt="" />
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
         <div className="order-total">
           <div>
@@ -95,7 +102,8 @@ function Order() {
             <p>Cash on delivery</p>
           </div>
         </div>
-        <button className="order-check">Place Order</button>
+        <button className="order-check" onClick={() => sendEmail()}>Place Order</button>
+         <button className="orderalldelete" onClick={()=>clearLocalStorage()}>Delete Order</button>
       </div>
 
       <div>

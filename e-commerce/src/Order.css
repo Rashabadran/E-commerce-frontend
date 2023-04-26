@@ -1,232 +1,227 @@
 .orders-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .order-style {
-    width: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  column-gap: 2rem;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .order-det {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #ccc;
-    /* sets the border style */
-    border-radius: 10px;
-    /* sets the border radius */
-    width: 20%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  width: 20%;
 }
 
 .order-img {
-    margin-top: 2rem;
-    margin-left: 10rem;
-    margin-right: 10rem;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
 }
 
 .order-writing {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .quantity {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 2rem;
 }
 
 .Orders-page {
-    font-size: 3rem;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    text-align: center;
+  font-size: 3rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  text-align: center;
 }
 
 .del-icon {
-    width: 3rem;
-    height: 3rem;
-    padding-right: 19rem;
+  width: 3rem;
+  height: 3rem;
+  padding-right: 19rem;
 }
 
 .order-total {
-    width: 25%;
-    margin-top: 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    font-size: 25px;
+  width: 50%;
+  margin-top: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
 }
 
 .order-pay {
-    width: 25%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+}
+
+.order-check {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  width: 30rem;
+  height: 3rem;
+  border-radius: 1rem;
+  background-color: gold;
+  color: black;
+  font-size: 2rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.delete-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.order-title {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.order-writing > p {
+  font-size: 1.2rem;
+}
+
+.orderalldelete {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  margin-right: 3rem;
+  width: 15rem;
+  height: 3rem;
+  border-radius: 1rem;
+  background-color: gold;
+  color: black;
+  font-size: 1.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  align-self: end;
+}
+
+
+/* Media queries for mobile */
+@media only screen and (max-width: 768px) {
+  .orders-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1rem;
+  }
+
+  .order-style {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .order-det {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 90%;
+    margin: 1rem 0;
+  }
+
+  .order-img {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .order-writing {
+    margin: 1rem;
+  }
+
+  .quantity {
+    margin-top: 1rem;
+  }
+
+  .Orders-page {
+    font-size: 2rem;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    text-align: center;
+    margin: 1rem;
+  }
+
+  .del-icon {
+    width: 2rem;
+    height: 2rem;
+    margin-left: auto;
+  }
+
+  .order-total {
+    width: 100%;
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    font-size: 25px;
-}
+    font-size: 20px;
+    margin-bottom: 1rem;
+  }
 
-.order-check {
-    margin-bottom: 3rem;
-    margin-top: 3rem;
-    width: 30rem;
+  .order-pay {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 20px;
+  }
+
+  .order-check {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    width: 90%;
     height: 3rem;
     border-radius: 1rem;
     background-color: gold;
     color: black;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
+  }
 
-.count-button {
-    display: flex;
-}
+  .delete-icon {
+    width: 20px;
+    height: 20px;
+  }
 
-.borderrA {
-    border: 1px solid black;
-    padding: 2px;
-    border-radius: 8px;
-}
+  .order-title {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
 
-.delete-icon {
-    width: 30px;
-    height: 30px;
-}
+  .order-writing > p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
 
-.order-title {
-    margin-bottom: 2rem;
-}
-
-.count-button__decrease,
-.count-button__increase {
-    background-color: white;
-    border: none;
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 1;
-    cursor: pointer;
-    font-family: "Times New Roman", Times, serif;
-}
-
-.count-button__quantity {
-    margin: 0 10px;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-@media screen and (max-width: 768px) {
-    .orders-all {
-        width: 90%;
-        margin: 0 auto;
-        margin-top: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .order-image {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .Img-desc {
-        margin-top: -8rem;
-        margin-left: 0;
-        margin-right: 0;
-        font-size: 1.5rem;
-    }
-
-    .order-flex {
-        margin-left: 0;
-        flex-wrap: wrap;
-    }
-
-    .del-icon {
-        padding-right: 0;
-    }
-
-    .order-total {
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 2rem;
-        font-size: 24px;
-    }
-
-    .order-check {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2rem;
-        margin-top: 2rem;
-        width: 80%;
-        height: 3rem;
-        border-radius: 1rem;
-        background-color: gold;
-        color: black;
-        font-size: 1.5rem;
-    }
-
-    .order-price {
-        font-size: 24px;
-    }
-
-    .count-button {
-        margin-top: 1rem;
-    }
-
-    .count-button__decrease,
-    .count-button__increase {
-        font-size: 18px;
-        width: 25px;
-        height: 25px;
-    }
-
-    .count-button__quantity {
-        font-size: 18px;
-        margin: 0 5px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .order-total {
-        width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 4rem;
-        font-size: 28px;
-    }
-
-    .order-check {
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 3rem;
-        margin-top: 3rem;
-        width: 60%;
-        height: 3rem;
-        border-radius: 1rem;
-        background-color: gold;
-        color: black;
-        font-size: 1.8rem;
-    }
-
-    .count-button__decrease,
-    .count-button__increase {
-        font-size: 20px;
-        width: 28px;
-        height: 28px;
-    }
-
-    .count-button__quantity {
-        font-size: 20px;
-        margin: 0 8px;
-    }
+  .orderalldelete {
+    margin-top: 2rem;
+    width: 60%;
+    height: 3rem;
+    align-self: center;
+    border-radius: 1rem;
+    background-color: gold;
+    color: black;
+    font-size: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
