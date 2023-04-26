@@ -6,7 +6,9 @@ import Home from './Home';
 import ProductsPage from './ProductsPage';
 import Product from './ProductDetail';
 import Dashboard from './Dashbord';
-
+import WinterDashboard from "./WinterDashboard"
+import Login from './login';
+import Signup from './signup';
 
 function App() {
  
@@ -15,11 +17,14 @@ function App() {
     <BrowserRouter>
     <Routes>
       
+        <Route path='/' element={<Login />} />
+        <Route path='Signup' element={<Signup />} />
         <Route path='Order' element={<Order />} />
         <Route path='Home' element={<Home />} />
         <Route path='ProductsPage' element={<ProductsPage />} />
         <Route path='Product' element={<Product />} />
         <Route path='Dashboard' element={<Dashboard />} />
+        <Route path='Winter' element={<WinterDashboard />} />
        
     </Routes>
     </BrowserRouter>
