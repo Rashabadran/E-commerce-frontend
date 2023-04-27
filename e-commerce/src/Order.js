@@ -9,6 +9,11 @@ import instagram from "./images/instagram.png";
 import gmail from "./images/gmail.png";
 import React, { useState, useEffect } from "react";
 import emailjs from '@emailjs/browser';
+import NavBar from "./NavBar";
+import Footer from './Footer';
+import swal from 'sweetalert';
+
+
 function Order() {
   const sendEmail = () => {
     emailjs.send('service_phdrfzg', 'template_j3wte84', {
@@ -31,15 +36,52 @@ function Order() {
 
 
 function handleProductClick(id) {
-  deleteProductFromLocalStorage(id);
+  swal({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  buttons: ["Cancel", "Yes, delete it!"],
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    deleteProductFromLocalStorage(id);
   const updatedCartItems = cartItems.filter((item) => item._id !== id);
   setCartItems(updatedCartItems);
+ 
+    swal("Poof! Your file has been deleted!", {
+      icon: "success",
+    });
+     window.location.reload();
+  } else {
+    swal("Your Order is safe!");
+  }
+});
+  
 }
 
 
 function clearLocalStorage() {
-  localStorage.clear();
-  window.location.reload();
+  swal({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  buttons: ["Cancel", "Yes, delete it!"],
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    localStorage.clear();
+ 
+    swal("Poof! Your file has been deleted!", {
+      icon: "success",
+    });
+     window.location.reload();
+  } else {
+    swal("Your Order is safe!");
+  }
+});
+  
 }
 
   
@@ -49,21 +91,7 @@ function clearLocalStorage() {
   }
   return (
     <>
-      <div className="navbar-container">
-        <div>
-          <img className="logoimg" src={logo} alt="" srcset="" />
-        </div>
-
-        <div className="navigation-buttons">
-          <p className="nav-buttons">Home</p>
-
-          <p className="nav-buttons">Collection</p>
-        </div>
-        <div className="last-header">
-          <p className="nav-buttons">sign out </p>
-          <img src={cartlogo} className="cartlogo" alt="" />
-        </div>
-      </div>
+      <NavBar/>
 
       <p className="Orders-page">Orders</p>
 
@@ -107,37 +135,7 @@ function clearLocalStorage() {
       </div>
 
       <div>
-        <div className="footer">
-          <div className="footer-first">
-            <p className="footer-first-p">Home </p>
-
-            <p className="footer-first-p">Winter Collection </p>
-            <p className="footer-first-p">Summer Collection </p>
-          </div>
-
-          <div className="footer-second">
-            <p className="footer-second-p"> @ Copy Right: 2023</p>
-            <p className="footer-second-p">Powered by: Codi Team</p>
-          </div>
-
-          <div>
-            <p className="footer-second-p"> Stay IN TOUCH:</p>
-            <div className="footer-links">
-              <button className="button-footer-background">
-                <img className="images-buttons-footer" src={whatsapp} alt="" />
-              </button>
-              <button className="button-footer-background">
-                <img className="images-buttons-footer" src={facebook} alt="" />
-              </button>
-              <button className="button-footer-background">
-                <img className="images-buttons-footer" src={instagram} alt="" />
-              </button>
-              <button className="button-footer-background">
-                <img className="images-buttons-footer" src={gmail} alt="" />
-              </button>
-            </div>
-          </div>
-        </div>
+       <Footer/>
       </div>
     </>
   );

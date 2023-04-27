@@ -11,7 +11,8 @@ import facebook from "../src/images/facebook.png"
 import whatsapp from "../src/images/whatsapp.png"
 import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
-
+import NavBar from "./NavBar";
+import Footer from './Footer';
 function ProductsPage() {
   const [cardDatas, setCardDatas] = useState([]);
   const [cardImages, setCardImages] = useState([]);
@@ -44,33 +45,7 @@ function ProductsPage() {
   return (
     
     <div className="allProductsss">
-
-    <div className='navbar-container'>
-
-        <div>
-          <img className='logoimg' src={logo} alt="" srcset="" />
-        </div>
-
-
-
-        <div className='navigation-buttons'>
-
-          <a href="/Home"> <p className='nav-buttons'>Home</p></a>
-           <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
-           <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
-
-        </div>
-        <div className='last-header'>
-          <p className="nav-buttons">sign in </p>
-          <img src={cartlogo} className="cartlogo" alt="" />
-
-        </div>
-
-
-
-
-     
-      </div>
+      <NavBar/>
       <div className="allProductsPage">
       <div className="mainTitleProduct">{title}</div>
       <div className="card-list">
@@ -98,59 +73,7 @@ function ProductsPage() {
         ))}
       </div>
     </div>
-     <div className='footer'>
-
-        <div className='footer-first'>
-
-         <Link to={`/Home`}> <p className='footer-first-p'>Home </p></Link>
-          <a href="/Home/#about-Us"><p className='footer-first-p'> About Us </p></a>
-          <a href="/Home/#winterCollection"><p className='footer-first-p' >Winter Collection </p></a>
-          <a href="/Home/#summerCollection"><p className='footer-first-p' >Summer Collection </p></a>
-
-
-
-
-
-        </div>
-
-
-
-
-
-
-        <div className='footer-second'>
-
-          <p className='footer-second-p'> @ Copy Right: 2023</p>
-          <p className='footer-second-p'>Powered by: Codi Team</p>
-
-
-        </div>
-
-
-
-
-
-
-        <div>
-
-
-          <p className='footer-second-p'> Stay IN TOUCH:</p>
-          <div className='footer-links'>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={whatsapp} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={facebook} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={instagram} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={gmail} alt="" /></button>
-
-
-
-          </div>
-
-
-
-        </div>
-
-
-      </div>
+     <Footer/>
 
     </div>
   );

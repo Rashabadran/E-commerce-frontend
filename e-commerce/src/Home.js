@@ -1,7 +1,7 @@
 import './Home.css';
 import logo from "../src/images/logo.png"
 import cartlogo from "../src/images/cartlogo.png"
-import slider1 from "../src/images/slider1.jpg"
+import slider1 from "../src/images/slider1.jpeg"
 import slider2 from "../src/images/slider2.jpg"
 import slider3 from "../src/images/slider3.jpg"
 import slider4 from "../src/images/slider4.jpg"
@@ -16,6 +16,8 @@ import axios from 'axios';
 import Arrow from "../src/images/Arrow.png"
 import { useState, useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from "./NavBar";
+import Footer from './Footer';
 function App() {
 
 const [categoryFetching,setCategory]=useState([])
@@ -103,31 +105,7 @@ const delay = 2500;
   return (
     <div className="App">
 
-      <div className='navbar-container'>
-
-        <div>
-          <img className='logoimg' src={logo} alt="" srcset="" />
-        </div>
-
-
-
-        <div className='navigation-buttons'>
-
-          <a href="/Home "> <p className='nav-buttons '>Home</p></a>
-          <a href="/Home/#about-Us"><p className='nav-buttons '>About Us</p></a>
-          <a href="/Home/#winterCollection"><p className='nav-buttons '>Collection</p></a>
-
-        </div>
-        <div className='last-header'>
-          <p className="nav-buttons">sign in </p>
-          <img src={cartlogo} className="cartlogo" alt="" />
-
-        </div>
-
-
-
-
-      </div>
+   <NavBar/>
 
 
 
@@ -272,59 +250,7 @@ const delay = 2500;
 
 
 
-      <div className='footer'>
-
-        <div className='footer-first'>
-
-          <a href="/Home"><p className='footer-first-p '>Home </p></a>
-          <a href="/Home/#about-Us"><p className='footer-first-p ' > About Us </p></a>
-          <a href="/Home/#winterCollection"><p className='footer-first-p '  >Winter Collection </p></a>
-          <a href="/Home/#summerCollection"><p className='footer-first-p ' >Summer Collection </p></a>
-
-
-
-
-
-        </div>
-
-
-
-
-
-
-        <div className='footer-second'>
-
-          <p className='footer-second-p'> @ Copy Right: 2023</p>
-          <p className='footer-second-p'>Powered by: Codi Team</p>
-
-
-        </div>
-
-
-
-
-
-
-        <div>
-
-
-          <p className='footer-second-p'> Stay IN TOUCH:</p>
-          <div className='footer-links'>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={whatsapp} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={facebook} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={instagram} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={gmail} alt="" /></button>
-
-
-
-          </div>
-
-
-
-        </div>
-
-
-      </div>
+      <Footer/>
 
 
 

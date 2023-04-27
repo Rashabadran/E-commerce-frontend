@@ -12,7 +12,8 @@ import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
 import { Link } from 'react-router-dom';
 import emailjs from "emailjs-com";
-
+import NavBar from "./NavBar";
+import Footer from './Footer';
 
 function Product() {
  
@@ -110,6 +111,7 @@ function handleButtonClick(event) {
       color: valueColors,
       quantity: quantity,
     });
+
   }
 
   // Save the updated cart items to local storage
@@ -185,31 +187,7 @@ function handleButtonClick(event) {
 
   return (
     <div className="imagesProduct">
-    <div className='navbar-container'>
-
-        <div>
-          <img className='logoimg' src={logo} alt="" srcset="" />
-        </div>
-
-
-
-        <div className='navigation-buttons'>
-
-          <a href="/Home"><p className='nav-buttons'>Home</p></a>
-          <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
-           <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
-
-        </div>
-        <div className='last-header'>
-          <p className="nav-buttons">sign in </p>
-          <img src={cartlogo} className="cartlogo" alt="" />
-
-        </div>
-
-
-
-
-      </div>
+    <NavBar/>
       <div className='allProducts'>
       <Carousel interval={null}>
         {images.map((image, index) => (
@@ -259,64 +237,12 @@ function handleButtonClick(event) {
       <ul className='descriptionDetails'><li>{data.Description}</li></ul>
     </div>
     <div>
-      <button className='cartButton' onClick={saveToLocalStorage}> Add to cart</button>
+     <Link to={`/Order`}> <button className='cartButton' onClick={saveToLocalStorage}> Add to cart</button></Link>
     </div>
     </div>
 
       </div>
-      <div className='footer'>
-
-        <div className='footer-first'>
-
-           <a href="/Home"><p className='footer-first-p'>Home </p></a>
-           <a href="/Home/#about-Us"><p className='footer-first-p'> About Us </p></a>
-           <a href="/Home/#winterCollection"><p className='footer-first-p'>Winter Collection </p></a>
-           <a href="/Home/#summerCollection"><p className='footer-first-p'>Summer Collection </p></a>
-
-
-
-
-
-        </div>
-
-
-
-
-
-
-        <div className='footer-second'>
-
-          <p className='footer-second-p'> @ Copy Right: 2023</p>
-          <p className='footer-second-p'>Powered by: Codi Team</p>
-
-
-        </div>
-
-
-
-
-
-
-        <div>
-
-
-          <p className='footer-second-p'> Stay IN TOUCH:</p>
-          <div className='footer-links'>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={whatsapp} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={facebook} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={instagram} alt="" /></button>
-            <button className='button-footer-background' ><img className='images-buttons-footer' src={gmail} alt="" /></button>
-
-
-
-          </div>
-
-
-
-        </div>
-
-
-      </div>
+      <Footer/>
     </div>
   );
 }
