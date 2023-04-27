@@ -9,6 +9,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function WinterDashboard() {
     const [category_id, setcategory_id] = useState(null);
@@ -71,7 +73,7 @@ function WinterDashboard() {
     let sessionTimeout; // Variable to store the session timeout ID
 
     function startSessionTimer() {
-        sessionTimeout = setTimeout(resetSession, 1 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
+        sessionTimeout = setTimeout(resetSession, 10 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
     }
 
     function resetSessionTimer() {
@@ -100,6 +102,7 @@ function WinterDashboard() {
 
 
     useEffect(() => {
+        checkUserRole()
 
         getCategories()
 
@@ -123,6 +126,7 @@ function WinterDashboard() {
 
 
     const deleteproduct = async (id) => {
+        startSessionTimer();
         const response = await axios.delete(`http://localhost:3030/product/deleteProduct/${id}`)
         console.log("the product is deleted ")
 
@@ -130,9 +134,10 @@ function WinterDashboard() {
 
 
 
+        toast.success('deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
 
 
-        // fawazzzzzzzzzzzzzzzz make the toastifyyyyy for deletion  
+
     }
 
 
@@ -188,6 +193,7 @@ function WinterDashboard() {
 
 
     const addCategory = async () => {
+        startSessionTimer();
         const formData = new FormData()
         formData.append('name', catname)
         formData.append('season', season)
@@ -200,18 +206,20 @@ function WinterDashboard() {
                 "Content-Type": "multipart/form-data",
             },
         });
-
+        toast.success('Added category  successfully!', { position: toast.POSITION.TOP_RIGHT });
         console.log(formData);
     }
 
 
 
     const deletecategory = async (id) => {
+        startSessionTimer();
         const response = await axios.delete(`http://localhost:3030/cat/${id}`)
         console.log(response.data)
 
 
         console.log("the category is deleted ")
+        toast.success('category deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
     }
 
 
@@ -249,6 +257,7 @@ function WinterDashboard() {
 
 
     const addProduct = async () => {
+        startSessionTimer();
         const formData = new FormData();
         formData.append("title", title);
         formData.append("price", price);
@@ -266,12 +275,14 @@ function WinterDashboard() {
 
         console.log(threeimages);
         console.log("success product amira");
+        toast.success('Product added successfully!', { position: toast.POSITION.TOP_RIGHT });
     };
 
 
 
 
     const editProduct = async () => {
+        startSessionTimer();
         const editdata = {
             title: edittitle,
             price: editprice,
@@ -290,6 +301,8 @@ function WinterDashboard() {
 
         const response = await axios.put(`http://localhost:3030/product/productUpdate/${Products_id}`, editdata);
 
+
+        toast.success('Product updated  successfully!', { position: toast.POSITION.TOP_RIGHT });
         console.log("response", response);
         console.log("success the product is updated  product amira");
     };
@@ -362,6 +375,7 @@ function WinterDashboard() {
 
     return (
         <div>
+            <ToastContainer />
             <div className="navbar-container">
                 <div>
                     <img className="logoimg" src={logo} alt="" />

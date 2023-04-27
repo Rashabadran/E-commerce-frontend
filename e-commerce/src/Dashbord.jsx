@@ -9,6 +9,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Dashboard() {
   const [category_id, setcategory_id] = useState(null);
@@ -82,7 +84,7 @@ function Dashboard() {
   let sessionTimeout; // Variable to store the session timeout ID
 
   function startSessionTimer() {
-    sessionTimeout = setTimeout(resetSession, 1 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
+    sessionTimeout = setTimeout(resetSession, 10 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
   }
 
   function resetSessionTimer() {
@@ -143,8 +145,13 @@ function Dashboard() {
 
 
   const deleteproduct = async (id) => {
+    startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/product/deleteProduct/${id}`)
     console.log("the product is deleted ")
+
+
+
+    toast.success('deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
 
 
 
@@ -159,6 +166,7 @@ function Dashboard() {
 
 
   const getproductsbyid = async (id) => {
+    startSessionTimer();
     const response = await axios.get(`http://localhost:3030/product//productbyID/${id}`)
     setproductsdata(response.data)
     console.log(response.data)
@@ -208,6 +216,7 @@ function Dashboard() {
 
 
   const addCategory = async () => {
+    startSessionTimer();
     const formData = new FormData()
     formData.append('name', catname)
     formData.append('season', season)
@@ -222,16 +231,19 @@ function Dashboard() {
     });
 
     console.log(formData);
+    toast.success('Added category  successfully!', { position: toast.POSITION.TOP_RIGHT });
   }
 
 
 
   const deletecategory = async (id) => {
+    startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/cat/${id}`)
     console.log(response.data)
 
 
     console.log("the category is deleted ")
+    toast.success('category deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
   }
 
 
@@ -269,6 +281,7 @@ function Dashboard() {
 
 
   const addProduct = async () => {
+    startSessionTimer();
     const formData = new FormData();
     formData.append("title", title);
     formData.append("price", price);
@@ -286,12 +299,14 @@ function Dashboard() {
 
     console.log(threeimages);
     console.log("success product amira");
+    toast.success('Product added successfully!', { position: toast.POSITION.TOP_RIGHT });
   };
 
 
 
 
   const editProduct = async () => {
+    startSessionTimer();
     const editdata = {
       title: edittitle,
       price: editprice,
@@ -311,6 +326,7 @@ function Dashboard() {
     const response = await axios.put(`http://localhost:3030/product/productUpdate/${Products_id}`, editdata);
 
     console.log("response", response);
+    toast.success('Product updated  successfully!', { position: toast.POSITION.TOP_RIGHT });
     console.log("success the product is updated  product amira");
   };
 
@@ -382,6 +398,7 @@ function Dashboard() {
 
   return (
     <div>
+      <ToastContainer />
       <div className="navbar-container">
         <div>
           <img className="logoimg" src={logo} alt="" />
@@ -400,7 +417,7 @@ function Dashboard() {
 
 
         <div>
-          {/* winterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrcategoryyyyyyyyyyyyyyyyyyyyyyyy */}
+          {/* summmmmer category  */}
           <Link to="/Dashboard">
             <p className="nav-buttons">Summer Categories</p>
           </Link>
