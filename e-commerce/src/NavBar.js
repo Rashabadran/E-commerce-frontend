@@ -30,8 +30,8 @@ return(
 
         </div>
         <div className='last-header'>
-          <p className="nav-buttons">sign in </p>
-          <img src={cartlogo} className="cartlogo" alt="" />
+          <p className="nav-buttons">sign out </p>
+          <Link to={`/Order`}> <img src={cartlogo} className="cartlogo" alt="" /></Link>
 
         </div>
 

@@ -27,7 +27,8 @@ function Order() {
       });
   };
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
-
+  const [quantity, setQuantity] = useState(1);
+  const [cartquantity,setcartQuantity]=useState()
  function deleteProductFromLocalStorage(id) {
   const updatedProducts = cartItems.filter((product) => product._id !== id);
   localStorage.setItem('cartItems', JSON.stringify(updatedProducts));
@@ -59,7 +60,15 @@ function handleProductClick(id) {
 });
   
 }
+const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
 
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
 
 function clearLocalStorage() {
   swal({
@@ -100,13 +109,16 @@ function clearLocalStorage() {
           {cartItems.map((item) => (
             <div className="order-det" key={item._id}>
               <div className="order-writing">
-                <div className="order-title">
+                <div className="order-title desOrder">
                   <h2>{item.title}</h2>
                 </div>
-                <p>Size: {item.size}</p>
-                <p>Color: {item.color}</p>
-                <p>Price: {item.price}</p>
-                <p>Quantity: {item.quantity}</p>
+                <p className="desOrder">Size: {item.size}</p>
+                <p className="desOrder">Color: {item.color}</p>
+                <p className="orderPrice desOrder">Price: {item.price == item.priceAfterDiscount ? <h4 className="childPrice">{item.price}$</h4>:
+                <h4 className="childPrice,desOrder">{item.priceAfterDiscount}</h4>}</p>
+                <p className="desOrder">Quantity: {item.quantity}</p>
+                
+                 
                 <div className="quantity">
                 <img className="delete-icon" onClick={() => handleProductClick(item._id)} src={del} alt="" />
                 </div>
