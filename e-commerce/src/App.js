@@ -4,7 +4,7 @@ import { Route, Routes,BrowserRouter } from 'react-router-dom';
 import Order from './Order';
 import Home from './Home';
 import ProductsPage from './ProductsPage';
-import Product from './ProductDetail';
+import Product from './Product';
 import Dashboard from './Dashbord';
 import WinterDashboard from "./WinterDashboard"
 import Login from './login';

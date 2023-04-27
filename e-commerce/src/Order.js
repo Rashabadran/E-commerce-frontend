@@ -28,13 +28,60 @@ function Order() {
   };
   const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
   const [quantity, setQuantity] = useState(1);
-  const [cartquantity,setcartQuantity]=useState()
+  const [cartquantity,setcartQuantity]=useState();
+  const [totallPrice, setTotalPrice] = useState();
+  const [phoneNum,setPhoneNum]=useState(450);
+  const[address,setAddress]=useState("ana honnn")
+
  function deleteProductFromLocalStorage(id) {
   const updatedProducts = cartItems.filter((product) => product._id !== id);
   localStorage.setItem('cartItems', JSON.stringify(updatedProducts));
 }
 
-
+const handleSubmit = async (event) => {
+     sendEmail();
+    const cartitemid = cartItems.map((item) => item._id);
+    const cartquan = cartItems.map((item) => item.quantity);
+    const cartsize = cartItems.map((item) => item.size);
+    const carttitle = cartItems.map((item) => item.title);
+    const cartcolor = cartItems.map((item) => item.color);
+    const cartprice = cartItems.map((item) => item.priceAfterDiscount);
+    var total = 0;
+    const cart = [];
+    for (let i = 0; i < cartquan.length; i++) {
+      const item = {};
+      item.productID = cartitemid[i];
+      item.color = cartcolor[i];
+      item.size = cartsize[i];
+      item.title = carttitle[i];
+      item.quantity = cartquan[i];
+      item.price = cartprice[i];
+      item.totalprice = cartquan[i] * cartprice[i];
+      cart.push(item);
+      total += item.totalprice;
+    }
+    console.log(total);
+    setTotalPrice(total);
+    console.log(totallPrice);
+    // event.preventDefault();
+    const response = await fetch("http://localhost:3030/api/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart,
+        payment_type: "Cash on Delivery",
+        total_price: total,
+        phone_number: phoneNum,
+        address: address,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+    
+    
+  };
 
 function handleProductClick(id) {
   swal({
@@ -81,7 +128,7 @@ function clearLocalStorage() {
 .then((willDelete) => {
   if (willDelete) {
     localStorage.clear();
- 
+    window.location.reload();
     swal("Poof! Your file has been deleted!", {
       icon: "success",
     });
@@ -98,6 +145,11 @@ function clearLocalStorage() {
   {
     console.log("cart", cartItems);
   }
+
+   useEffect(() => {
+    handleSubmit();
+  }, [totallPrice]);
+
   return (
     <>
       <NavBar/>
@@ -131,7 +183,7 @@ function clearLocalStorage() {
             <p>Total:</p>
           </div>
           <div>
-            <p>$33.3</p>
+            <p>{totallPrice} $</p>
           </div>
         </div>
         <div className="order-pay">
@@ -142,7 +194,10 @@ function clearLocalStorage() {
             <p>Cash on delivery</p>
           </div>
         </div>
-        <button className="order-check" onClick={() => sendEmail()}>Place Order</button>
+        <button className="order-check" onClick={(event) => {
+            handleSubmit(event);
+
+          }}>Place Order</button>
          <button className="orderalldelete" onClick={()=>clearLocalStorage()}>Delete Order</button>
       </div>
 
