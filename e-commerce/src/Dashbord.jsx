@@ -63,7 +63,7 @@ function Dashboard() {
     if (!token || userRole === 'user') {
       // User has the 'user' role, so navigate to the desired page
 
-      navigate("/", { replace: true });
+      navigate("/Login", { replace: true });
     }
   }
 
@@ -534,7 +534,7 @@ function Dashboard() {
 
         <div>
 
-          <Link to="/" onClick={() => { sessionStorage.clear(); }}>
+          <Link to="/Login" onClick={() => { sessionStorage.clear(); }}>
             <p className="nav-buttons">Sign out</p>
           </Link>
 

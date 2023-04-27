@@ -62,7 +62,7 @@ function WinterDashboard() {
         if (!token || userRole === 'user') {
             // User has the 'user' role, so navigate to the desired page
 
-            navigate("/", { replace: true });
+            navigate("/Login", { replace: true });
         }
     }
 
@@ -438,7 +438,7 @@ function WinterDashboard() {
 
                 <div>
                     {/* winterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrcategoryyyyyyyyyyyyyyyyyyyyyyyy */}
-                    <Link to="/home">
+                    <Link to="/Winter">
                         <p className="nav-buttons">Winter Categories</p>
                     </Link>
 
@@ -473,7 +473,7 @@ function WinterDashboard() {
 
                 <div>
 
-                    <Link to="/" onClick={() => { sessionStorage.clear(); }}>
+                    <Link to="/Login" onClick={() => { sessionStorage.clear(); }}>
                         <p className="nav-buttons">Sign out</p>
                     </Link>
 

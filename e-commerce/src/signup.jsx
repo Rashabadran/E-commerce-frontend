@@ -98,9 +98,10 @@ function Signup() {
                 sessionStorage.setItem('id', response.data._id);
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('role', response.data.role);
+                sessionStorage.setItem('address', response.data.address);
+                sessionStorage.setItem('phone', response.data.phone);
 
-
-                navigate("/Home", { replace: true });
+                navigate("/", { replace: true });
             } else {
                 toast.error(response.data.message, { position: toast.POSITION.TOP_RIGHT });
             }
@@ -157,7 +158,7 @@ function Signup() {
 
                     <div className="login-word">
                         <h2>have an account </h2>
-                        <Link to="/">    <h2>link login</h2></Link>
+                        <Link to="/Login">    <h2>link login</h2></Link>
                     </div>
                 </div>
             </div>

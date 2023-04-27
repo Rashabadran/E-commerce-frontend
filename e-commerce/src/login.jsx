@@ -63,8 +63,9 @@ function Login() {
                 sessionStorage.setItem('id', response.data._id);
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('role', response.data.role);
-
-                navigate("/Home", { replace: true });
+                sessionStorage.setItem('address', response.data.address);
+                sessionStorage.setItem('phone', response.data.phone);
+                navigate("/", { replace: true });
             } else {
 
                 toast.error(response.data.message, { position: toast.POSITION.TOP_RIGHT });
