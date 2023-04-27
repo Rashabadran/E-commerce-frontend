@@ -29,6 +29,8 @@ function WinterDashboard() {
     const [price, setPrice] = useState("");
 
 
+    const [cat_id, setcat_id] = useState(null)
+
     const [Products_id, setProducts_id] = useState(null)
 
     const [edittitle, setedittitle] = useState('')
@@ -106,7 +108,7 @@ function WinterDashboard() {
 
         getCategories()
 
-    }, [categories, Description, pimage, color, category_id, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
+    }, [categories, Description, pimage, color, cat_id, Newsale, category_id, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
 
     const getProducts = async (cat_id) => {
         const response = await axios.get(
@@ -211,6 +213,28 @@ function WinterDashboard() {
     }
 
 
+    const handleSale = (e) => {
+        setNewsale(e.target.value);
+    };
+
+    const putCategory = async () => {
+
+
+
+        const data = { sale: Newsale };
+
+
+        await axios
+
+            .put(`http://localhost:3030/cat/${cat_id}`, {
+                sale: Newsale
+            })
+
+        console.log(data);
+
+    }
+
+
 
     const deletecategory = async (id) => {
         startSessionTimer();
@@ -225,9 +249,7 @@ function WinterDashboard() {
 
 
 
-    const handleSale = (e) => {
-        setNewsale(e.target.value);
-    };
+
 
 
 
@@ -256,13 +278,44 @@ function WinterDashboard() {
     };
 
 
+
+    const [productimage, setproductimage] = useState([])
+
+
+    function handleProductImage(e) {
+        const selectedFiles = e.target.files;
+        const newImages = [];
+
+        for (let i = 0; i < selectedFiles.length; i++) {
+            const file = selectedFiles[i];
+
+            // Check if the file is an image
+            if (file.type.startsWith("image/")) {
+                const reader = new FileReader();
+
+                reader.onload = () => {
+                    newImages.push(file);
+                    setproductimage(newImages);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+    }
+
+
+
     const addProduct = async () => {
         startSessionTimer();
         const formData = new FormData();
         formData.append("title", title);
         formData.append("price", price);
         formData.append("Description", Description);
-        formData.append("image", threeimages);
+
+        for (let i = 0; i < productimage.length; i++) {
+            formData.append("image", productimage[i]);
+        }
+
         formData.append("category", category_id);
         for (let i = 0; i < size.length; i++) {
             formData.append("size[]", size[i]);
@@ -461,6 +514,7 @@ function WinterDashboard() {
                                 onOpening={() => {
                                     setcategory_id(item.id);
                                     getProducts(item.id);
+                                    setcat_id(item.id)
                                     setOpenIndex(index);
                                 }}
                                 onClosing={() => setOpenIndex(-1)}
@@ -475,10 +529,11 @@ function WinterDashboard() {
                                             value={item.sale}
                                             onChange={handleSale}
                                         ></input>
-                                        <button className="add-sal" >
+                                        <button className="add-sal" onClick={putCategory}>
                                             Add
                                         </button>
                                     </div>
+
 
 
 
@@ -606,7 +661,7 @@ function WinterDashboard() {
                 <div>
                     <label htmlFor="images">Choose Images:</label>
                     <br />
-                    <input type="file" id="images" name="file" onChange={handlePimage} multiple />
+                    <input type="file" id="images" name="file" onChange={handleProductImage} multiple />
                     <br />
                     {threeimages.map((image, index) => (
                         <img key={index} src={image} alt={`Image ${index}`} />

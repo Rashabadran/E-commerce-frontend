@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import { Link } from 'react-router-dom';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast, ToastContainer, useToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Dashboard() {
@@ -47,7 +47,7 @@ function Dashboard() {
   const [productsdata, setproductsdata] = useState()
 
 
-
+  const [cat_id, setcat_id] = useState(null)
 
 
   const navigate = useNavigate();
@@ -125,7 +125,7 @@ function Dashboard() {
     getCategories()
     checkUserRole()
 
-  }, [categories, Description, pimage, color, category_id, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
+  }, [categories, Description, pimage, color, category_id, cat_id, Newsale, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
 
   const getProducts = async (cat_id) => {
     const response = await axios.get(
@@ -277,6 +277,37 @@ function Dashboard() {
 
 
 
+
+
+  const handleSale = (e) => {
+    setNewsale(e.target.value);
+  };
+
+  const putCategory = async () => {
+
+
+
+    const data = { sale: Newsale };
+
+
+    await axios
+
+      .put(`http://localhost:3030/cat/${cat_id}`, {
+        sale: Newsale
+      })
+
+    console.log(data);
+
+  }
+
+
+
+
+
+
+
+
+
   const deletecategory = async (id) => {
     startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/cat/${id}`)
@@ -290,9 +321,7 @@ function Dashboard() {
 
 
 
-  const handleSale = (e) => {
-    setNewsale(e.target.value);
-  };
+
 
 
 
@@ -548,6 +577,7 @@ function Dashboard() {
                 onOpening={() => {
                   setcategory_id(item.id);
                   getProducts(item.id);
+                  setcat_id(item.id)
                   setOpenIndex(index);
                 }}
                 onClosing={() => setOpenIndex(-1)}
@@ -562,10 +592,15 @@ function Dashboard() {
                       value={item.sale}
                       onChange={handleSale}
                     ></input>
-                    <button className="add-sal" >
+                    <button className="add-sal" onClick={putCategory}>
                       Add
                     </button>
                   </div>
+
+
+
+
+
 
 
 
