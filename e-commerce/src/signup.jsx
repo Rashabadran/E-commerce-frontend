@@ -94,6 +94,12 @@ function Signup() {
 
             console.log(response.data.message)
             if (response.data.message == "User created successfully.") {
+
+                sessionStorage.setItem('id', response.data._id);
+                sessionStorage.setItem('token', response.data.token);
+                sessionStorage.setItem('role', response.data.role);
+
+
                 navigate("/Home", { replace: true });
             } else {
                 toast.error(response.data.message, { position: toast.POSITION.TOP_RIGHT });
