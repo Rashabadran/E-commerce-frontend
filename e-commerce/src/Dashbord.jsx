@@ -20,6 +20,7 @@ function Dashboard() {
   const [season, setSeason] = useState("summer");
   const [sale, setSale] = useState(0);
   const [image, setImage] = useState("");
+
   const [Newcatname, setNewcatname] = useState("");
   const [Newseason, setNewseason] = useState("summer");
   const [Newimage, setNewimage] = useState("");
@@ -44,7 +45,6 @@ function Dashboard() {
 
 
   const [productsdata, setproductsdata] = useState()
-
 
 
 
@@ -200,6 +200,47 @@ function Dashboard() {
   }
 
 
+
+
+  const [productimage, setproductimage] = useState([])
+
+
+  function handleProductImage(e) {
+    const selectedFiles = e.target.files;
+    const newImages = [];
+
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+
+      // Check if the file is an image
+      if (file.type.startsWith("image/")) {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          newImages.push(file);
+          setproductimage(newImages);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   const handlePimage = (e) => {
     const files = Array.from(e.target.files);
     const reader = new FileReader();
@@ -286,8 +327,16 @@ function Dashboard() {
     formData.append("title", title);
     formData.append("price", price);
     formData.append("Description", Description);
-    formData.append("image", threeimages);
+
     formData.append("category", category_id);
+
+    for (let i = 0; i < productimage.length; i++) {
+      formData.append("image", productimage[i]);
+    }
+
+
+
+
     for (let i = 0; i < size.length; i++) {
       formData.append("size[]", size[i]);
     }
@@ -295,7 +344,11 @@ function Dashboard() {
       formData.append("color[]", color[i]);
     }
 
-    await axios.post("http://localhost:3030/product/product", formData);
+    await axios.post("http://localhost:3030/product/product", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     console.log(threeimages);
     console.log("success product amira");
@@ -640,7 +693,7 @@ function Dashboard() {
         <div>
           <label htmlFor="images">Choose Images:</label>
           <br />
-          <input type="file" id="images" name="file" onChange={handlePimage} multiple />
+          <input type="file" id="images" name="file" onChange={handleProductImage} multiple />
           <br />
           {threeimages.map((image, index) => (
             <img key={index} src={image} alt={`Image ${index}`} />
