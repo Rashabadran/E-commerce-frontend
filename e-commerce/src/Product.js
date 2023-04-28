@@ -34,7 +34,9 @@ function Product() {
   const [price,setPrice]=useState();
   // const { productId } = match.params;
    
-
+     useEffect(() => {
+    console.clear();
+  }, []);
 
 // Get all size and color buttons
 const sizeButtons = document.querySelectorAll('.sizeDetailsName');
@@ -126,7 +128,7 @@ function handleButtonClick(event) {
      
       setData(res.data);
 
-      {console.log("d",data)}
+      
     } catch (error) {
       console.error(error);
     }
@@ -134,13 +136,13 @@ function handleButtonClick(event) {
 
 
    function handleColorClick(event) {
-    {console.log("colorr",valueColors)}
+   
     setValueColors(event.target.value);
     
   }
   
    function handleSizeClick(event) {
-    {console.log("size",valueSizes)}
+    
     setValueSizes(event.target.value);
     
     

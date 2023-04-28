@@ -25,7 +25,9 @@ const loadCategories = async () => {
     const res = await axios.get('http://localhost:3030/cat/');
     setCategory(res.data);
   };
-  
+     useEffect(() => {
+    console.clear();
+  }, []);
 
   useEffect(() => {
     loadCategories();

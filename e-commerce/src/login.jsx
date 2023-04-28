@@ -13,7 +13,9 @@ function Login() {
 
 
 
-
+       useEffect(() => {
+    console.clear();
+  }, []);
 
 
 

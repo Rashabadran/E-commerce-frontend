@@ -18,6 +18,10 @@ import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Orderdashbord() {
+   useEffect(() => {
+    console.clear();
+  }, []);
+  
   const [data, setData] = useState([]);
   const [cartStuff, setCartStuff] = useState([]);
 
@@ -37,7 +41,7 @@ function Orderdashbord() {
   const handleProductClick = async (id) => {
     startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/api/orders/${id}`)
-    console.log(response)
+    // console.log(response)
     toast.success('deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
   }
 

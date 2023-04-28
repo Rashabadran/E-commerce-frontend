@@ -14,7 +14,9 @@ function Signup() {
 
 
 
-
+    useEffect(() => {
+    console.clear();
+  }, []);
 
 
 
@@ -92,7 +94,7 @@ function Signup() {
             const data = { email: username, password: password, role: role, address: address, phone: phone, name: name };
             const response = await axios.post(`http://localhost:3030/users`, data);
 
-            console.log(response.data.message)
+            // console.log(response.data.message)
             if (response.data.message == "User created successfully.") {
 
                 sessionStorage.setItem('id', response.data._id);

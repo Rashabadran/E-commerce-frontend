@@ -56,8 +56,8 @@ function NavBar() {
       <div className='navigation-buttons'>
 
         <a href="/"><p className='nav-buttons'>Home</p></a>
-        <a href="/Home/#about-Us"><p className='nav-buttons'>About Us</p></a>
-        <a href="/Home/#winterCollection"><p className='nav-buttons'>Collection</p></a>
+        <a href="/#about-Us"><p className='nav-buttons'>About Us</p></a>
+        <a href="/#winterCollection"><p className='nav-buttons'>Collection</p></a>
 
       </div>
       <div className='last-header'>

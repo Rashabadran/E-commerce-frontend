@@ -18,10 +18,10 @@ return(
 
         <div className='footer-first'>
 
-          <a href="/Home"><p className='footer-first-p '>Home </p></a>
-          <a href="/Home/#about-Us"><p className='footer-first-p ' > About Us </p></a>
-          <a href="/Home/#winterCollection"><p className='footer-first-p '  >Winter Collection </p></a>
-          <a href="/Home/#summerCollection"><p className='footer-first-p ' >Summer Collection </p></a>
+          <a href="/"><p className='footer-first-p '>Home </p></a>
+          <Link to={"/"}><p className='footer-first-p ' > About Us </p></Link>
+          <a href="/#winterCollection"><p className='footer-first-p '  >Winter Collection </p></a>
+          <a href="/#summerCollection"><p className='footer-first-p ' >Summer Collection </p></a>
 
 
 

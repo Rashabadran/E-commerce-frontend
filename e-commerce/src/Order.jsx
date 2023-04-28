@@ -17,6 +17,10 @@ import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Order() {
+     useEffect(() => {
+    console.clear();
+  }, []);
+
   const sendEmail = () => {
     emailjs
       .send(
@@ -31,10 +35,10 @@ function Order() {
       )
       .then(
         (result) => {
-          console.log(result.text);
+          // console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          // console.log(error.text);
         }
       );
   };
@@ -47,10 +51,7 @@ function Order() {
   const [phoneNum, setPhoneNum] = useState(sessionStorage.getItem("phone"));
   const [address, setAddress] = useState(sessionStorage.getItem("address"));
 
-  // const phone = sessionStorage.getItem('phone');
-  // const adre = sessionStorage.getItem('address');
-  // setPhoneNum(sessionStorage.getItem('phone'))
-  // setAddress(sessionStorage.getItem('address'))
+  
   function deleteProductFromLocalStorage(id) {
     const updatedProducts = cartItems.filter((product) => product._id !== id);
     localStorage.setItem("cartItems", JSON.stringify(updatedProducts));
@@ -91,7 +92,7 @@ function Order() {
       carttwo.push(item);
       total += item.totalprice;
     }
-    console.log("totallll", total);
+   
     setTotalPrice(total);
   };
 
@@ -120,9 +121,9 @@ function Order() {
         cart.push(item);
         total += item.totalprice;
       }
-      console.log(total);
+      
 
-      console.log(totallPrice);
+      
       // event.preventDefault();
       const response = await fetch("http://localhost:3030/api/orders", {
         method: "POST",
@@ -138,7 +139,7 @@ function Order() {
         }),
       });
       const data = await response.json();
-      console.log(data);
+      
       toast.success("your order is sent ", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -213,9 +214,7 @@ function Order() {
     });
   }
 
-  {
-    console.log("cart", cartItems);
-  }
+ 
 
   useEffect(() => { }, [totallPrice]);
 

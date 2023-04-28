@@ -17,12 +17,12 @@ function Dashboard() {
   const [categories, setcategories] = useState(null);
   const [Products, setProducts] = useState(null);
   const [catname, setCatname] = useState("");
-  const [season, setSeason] = useState("summer");
+  const [season, setSeason] = useState("winter");
   const [sale, setSale] = useState(0);
   const [image, setImage] = useState("");
 
   const [Newcatname, setNewcatname] = useState("");
-  const [Newseason, setNewseason] = useState("summer");
+  const [Newseason, setNewseason] = useState("winter");
   const [Newimage, setNewimage] = useState("");
   const [Newsale, setNewsale] = useState(0);
 
@@ -51,8 +51,10 @@ function Dashboard() {
 
 
   const navigate = useNavigate();
-  // check if the user have the admin as a role 
-
+  
+   useEffect(() => {
+    console.clear();
+  }, []);
 
   function checkUserRole() {
     const userRole = sessionStorage.getItem('role');
@@ -125,7 +127,7 @@ function Dashboard() {
     getCategories()
     checkUserRole()
 
-  }, [categories, Description, pimage, color, category_id, cat_id, Newsale, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
+  }, [categories, Description, pimage, color, category_id, cat_id, Newsale, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata,season]);
 
   const getProducts = async (cat_id) => {
     const response = await axios.get(
@@ -135,7 +137,7 @@ function Dashboard() {
       title: product.title,
       id: product._id,
     }));
-    console.log(products);
+    // console.log(products);
     setProducts(products);
   };
 
@@ -147,7 +149,7 @@ function Dashboard() {
   const deleteproduct = async (id) => {
     startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/product/deleteProduct/${id}`)
-    console.log("the product is deleted ")
+    
 
 
 
@@ -169,7 +171,7 @@ function Dashboard() {
     startSessionTimer();
     const response = await axios.get(`http://localhost:3030/product//productbyID/${id}`)
     setproductsdata(response.data)
-    console.log(response.data)
+    // console.log(response.data)
     setedittitle(response.data.title)
     seteditColor(response.data.color)
     setsizeedit(response.data.size)
@@ -195,7 +197,7 @@ function Dashboard() {
 
 
   function handleImage(e) {
-    console.log(e.target.files)
+    // console.log(e.target.files)
     setImage(e.target.files[0])
   }
 
@@ -260,7 +262,7 @@ function Dashboard() {
     startSessionTimer();
     const formData = new FormData()
     formData.append('name', catname)
-    formData.append('season', season)
+    formData.append('season', Newseason)
     formData.append('sale', sale)
     formData.append('image', image)
 
@@ -271,7 +273,7 @@ function Dashboard() {
       },
     });
 
-    console.log(formData);
+    // console.log(formData);
     toast.success('Added category  successfully!', { position: toast.POSITION.TOP_RIGHT });
   }
 
@@ -296,7 +298,7 @@ function Dashboard() {
         sale: Newsale
       })
 
-    console.log(data);
+    // console.log(data);
 
   }
 
@@ -311,10 +313,10 @@ function Dashboard() {
   const deletecategory = async (id) => {
     startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/cat/${id}`)
-    console.log(response.data)
+    // console.log(response.data)
 
 
-    console.log("the category is deleted ")
+    // console.log("the category is deleted ")
     toast.success('category deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
   }
 
@@ -329,24 +331,24 @@ function Dashboard() {
 
   const handlesize = (event) => {
     setsize(event.target.value.split(","));
-    console.log(event.target.value.split(","))
+    // console.log(event.target.value.split(","))
 
   }
 
   const handleeditsize = (event) => {
     setsizeedit(event.target.value.split(","));
-    console.log(event.target.value.split(","))
+    // console.log(event.target.value.split(","))
 
   }
 
 
   const handleeditcolor = (event) => {
     seteditColor(event.target.value.split(","));
-    console.log(event.target.value.split(","))
+    // console.log(event.target.value.split(","))
   };
   const handlecolor = (event) => {
     setColor(event.target.value.split(","));
-    console.log(event.target.value.split(","))
+    // console.log(event.target.value.split(","))
   };
 
 
@@ -379,8 +381,8 @@ function Dashboard() {
       },
     });
 
-    console.log(threeimages);
-    console.log("success product amira");
+    // console.log(threeimages);
+    // console.log("success product amira");
     toast.success('Product added successfully!', { position: toast.POSITION.TOP_RIGHT });
   };
 
@@ -407,9 +409,9 @@ function Dashboard() {
 
     const response = await axios.put(`http://localhost:3030/product/productUpdate/${Products_id}`, editdata);
 
-    console.log("response", response);
+    // console.log("response", response);
     toast.success('Product updated  successfully!', { position: toast.POSITION.TOP_RIGHT });
-    console.log("success the product is updated  product amira");
+    // console.log("success the product is updated  product amira");
   };
 
 
@@ -634,7 +636,7 @@ function Dashboard() {
                       <p className="parag-dash-content">{product.title}</p>
                       <div className="flex-content-end">
                         <button className="background-none"
-                          onClick={() => { getproductsbyid(product.id); console.log(product.id); setProducts_id(product.id); OpenEditProducts() }}
+                          onClick={() => { getproductsbyid(product.id);  setProducts_id(product.id); OpenEditProducts() }}
                         >
                           <img src={editbutton} alt="" />
                         </button>
@@ -661,7 +663,7 @@ function Dashboard() {
         <input type="text" value={season} onChange={e => setSeason(e.target.value)} />
         <br />
 
-
+        
 
         <label className="textform" >Sale</label><br />
         <input type="text" value={sale} onChange={e => setSale(e.target.value)} />

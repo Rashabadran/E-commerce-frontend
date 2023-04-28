@@ -24,7 +24,10 @@ function ProductsPage() {
     setCardDatas(res.data);
     setCardImages(res.data.map((item,index) => item.image[0]));
   };
-
+  
+     useEffect(() => {
+    console.clear();
+  }, []);
 
  
   useEffect(() => {
@@ -36,7 +39,7 @@ function ProductsPage() {
     setTitle(res.data.name)
   };
 
-{console.log(title)}
+
  
   useEffect(() => {
     loadTitle();

@@ -1,10 +1,10 @@
+
+
 .container-signup {
     display: flex;
-    flex-direction: row;
-
+    flex-direction: column;
     height: 100%;
     padding: 2rem;
-
 }
 
 .signup-leftdiv {
@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 0rem;
+    padding-top: 4rem;
 }
 
 .pablo-signup {
@@ -28,7 +28,7 @@
     padding: 1rem;
     max-width: 40rem;
     height: auto;
-    gap: 0.5rem;
+    gap: 1rem;
     box-shadow: 0px 0px 9px 0px rgba(69, 69, 69, 0.75);
     -webkit-box-shadow: 0px 0px 9px 0px rgba(69, 69, 69, 0.75);
     -moz-box-shadow: 0px 0px 9px 0px rgba(69, 69, 69, 0.75);
@@ -60,26 +60,42 @@
 }
 
 .signup-rightdiv {
-    height: auto;
-    width: 100%;
-    background-image: url(../src//images/pexels-amin-imanifar-865773.jpg);
-    background-size: cover;
-    background-position: right;
-    background-repeat: no-repeat;
+    display: none;
 }
 
 @media (min-width: 768px) {
+    .signup-leftdiv {
+        padding-top: 10rem;
+    }
+
+    .signup-form-container {
+        width: 80%;
+        max-width: 30rem;
+    }
+}
+
+@media (min-width: 1024px) {
     .container-signup {
         flex-direction: row;
-        padding-top: 0px;
     }
 
     .signup-leftdiv {
         width: 50%;
-        padding-top: 0rem;
+        padding-top: 10rem;
+    }
+
+    .signup-form-container {
+        width: 70%;
+        max-width: 40rem;
     }
 
     .signup-rightdiv {
+        display: block;
         width: 50%;
+        background-image: url(../src//images/pexels-amin-imanifar-865773.jpg);
+        background-size: cover;
+        background-position: right;
+        background-repeat: no-repeat;
     }
 }
+
