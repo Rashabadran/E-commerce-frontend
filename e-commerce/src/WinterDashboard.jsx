@@ -17,11 +17,11 @@ function WinterDashboard() {
     const [categories, setcategories] = useState(null);
     const [Products, setProducts] = useState(null);
     const [catname, setCatname] = useState("");
-    const [season, setSeason] = useState("summer");
+    const [season, setSeason] = useState("winter");
     const [sale, setSale] = useState(0);
     const [image, setImage] = useState("");
     const [Newcatname, setNewcatname] = useState("");
-    const [Newseason, setNewseason] = useState("summer");
+    const [Newseason, setNewseason] = useState("winter");
     const [Newimage, setNewimage] = useState("");
     const [Newsale, setNewsale] = useState(0);
 
@@ -108,7 +108,7 @@ function WinterDashboard() {
 
         getCategories()
 
-    }, [categories, Description, pimage, color, cat_id, Newsale, category_id, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata]);
+    }, [categories, Description, pimage, color, cat_id, Newsale, category_id, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata, season]);
 
     const getProducts = async (cat_id) => {
         const response = await axios.get(

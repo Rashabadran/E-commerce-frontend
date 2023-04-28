@@ -17,12 +17,12 @@ function Dashboard() {
   const [categories, setcategories] = useState(null);
   const [Products, setProducts] = useState(null);
   const [catname, setCatname] = useState("");
-  const [season, setSeason] = useState("winter");
+  const [season, setSeason] = useState("summer");
   const [sale, setSale] = useState(0);
   const [image, setImage] = useState("");
 
   const [Newcatname, setNewcatname] = useState("");
-  const [Newseason, setNewseason] = useState("winter");
+  const [Newseason, setNewseason] = useState("summer");
   const [Newimage, setNewimage] = useState("");
   const [Newsale, setNewsale] = useState(0);
 
@@ -51,8 +51,8 @@ function Dashboard() {
 
 
   const navigate = useNavigate();
-  
-   useEffect(() => {
+
+  useEffect(() => {
     console.clear();
   }, []);
 
@@ -127,7 +127,7 @@ function Dashboard() {
     getCategories()
     checkUserRole()
 
-  }, [categories, Description, pimage, color, category_id, cat_id, Newsale, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata,season]);
+  }, [categories, Description, pimage, color, category_id, cat_id, Newsale, threeimages, Products_id, title, price, color, Description, edittitle, editprice, editDescription, productsdata, season]);
 
   const getProducts = async (cat_id) => {
     const response = await axios.get(
@@ -149,7 +149,7 @@ function Dashboard() {
   const deleteproduct = async (id) => {
     startSessionTimer();
     const response = await axios.delete(`http://localhost:3030/product/deleteProduct/${id}`)
-    
+
 
 
 
@@ -636,7 +636,7 @@ function Dashboard() {
                       <p className="parag-dash-content">{product.title}</p>
                       <div className="flex-content-end">
                         <button className="background-none"
-                          onClick={() => { getproductsbyid(product.id);  setProducts_id(product.id); OpenEditProducts() }}
+                          onClick={() => { getproductsbyid(product.id); setProducts_id(product.id); OpenEditProducts() }}
                         >
                           <img src={editbutton} alt="" />
                         </button>
@@ -663,7 +663,7 @@ function Dashboard() {
         <input type="text" value={season} onChange={e => setSeason(e.target.value)} />
         <br />
 
-        
+
 
         <label className="textform" >Sale</label><br />
         <input type="text" value={sale} onChange={e => setSale(e.target.value)} />
