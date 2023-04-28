@@ -189,6 +189,9 @@ function Order() {
     setQuantity(quantity + 1);
   };
 
+
+
+
   function clearLocalStorage() {
     swal({
       title: "Are you sure?",
@@ -214,7 +217,7 @@ function Order() {
     console.log("cart", cartItems);
   }
 
-  useEffect(() => {}, [totallPrice]);
+  useEffect(() => { }, [totallPrice]);
 
   return (
     <>

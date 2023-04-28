@@ -10,7 +10,10 @@ import emailjs from "emailjs-com";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import del from "./images/del.png";
+import { Link } from 'react-router-dom';
+import axios from "axios"
 import swal from "sweetalert";
+import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -27,11 +30,125 @@ function Orderdashbord() {
     }
 
     fetchData();
-  }, []);
+    checkUserRole()
+  }, [data]);
+
+
+  const handleProductClick = async (id) => {
+    startSessionTimer();
+    const response = await axios.delete(`http://localhost:3030/api/orders/${id}`)
+    console.log(response)
+    toast.success('deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
+  }
+
+
+
+  function resetSession() {
+    sessionStorage.clear(); // Clear the session storage
+  }
+
+  let sessionTimeout; // Variable to store the session timeout ID
+
+  function startSessionTimer() {
+    sessionTimeout = setTimeout(resetSession, 10 * 60 * 1000); // Set a timeout of 1 minute (1 * 60 * 1000 milliseconds)
+  }
+
+  function resetSessionTimer() {
+    clearTimeout(sessionTimeout); // Clear the session timeout
+    startSessionTimer(); // Start the session timer again
+  }
+
+
+
+  startSessionTimer();
+
+
+
+
+  const navigate = useNavigate();
+
+
+  function checkUserRole() {
+    const userRole = sessionStorage.getItem('role');
+    const token = sessionStorage.getItem('token');
+
+
+    // Get the user's role from session storage
+    if (!token || userRole === 'user') {
+      // User has the 'user' role, so navigate to the desired page
+
+      navigate("/Login", { replace: true });
+    }
+  }
+
+
+
 
   return (
     <>
-      <NavBar />
+      <div className="navbar-container">
+        <div>
+          <img className="logoimg" src={logo} alt="" />
+        </div>
+
+
+
+        <div>
+          {/* winterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrcategoryyyyyyyyyyyyyyyyyyyyyyyy */}
+          <Link to="/Winter">
+            <p className="nav-buttons">Winter Categories</p>
+          </Link>
+
+        </div>
+
+
+
+        <div>
+          {/* summmmmer category  */}
+          <Link to="/Dashboard">
+            <p className="nav-buttons">Summer Categories</p>
+          </Link>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div>
+
+          <Link to="/Orderdashboard ">
+            <p className="nav-buttons">Orders</p>
+          </Link>
+        </div>
+
+
+
+        {/* clear the session and go to the login  */}
+
+        <div>
+
+          <Link to="/Login" onClick={() => { sessionStorage.clear(); }}>
+            <p className="nav-buttons">Sign out</p>
+          </Link>
+
+        </div>
+
+
+
+
+      </div>
       <ToastContainer />
       <p className="Ordersdash-page">Orders</p>
 
@@ -68,7 +185,7 @@ function Orderdashbord() {
               </div>
               <div className="deldash">
                 <img
-                  // onClick={() => handleProductClick(item._id)}
+                  onClick={() => handleProductClick(item._id)}
                   src={del}
                   alt=""
                 />
