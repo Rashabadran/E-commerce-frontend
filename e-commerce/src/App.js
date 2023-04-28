@@ -9,6 +9,7 @@ import Dashboard from './Dashbord';
 import WinterDashboard from "./WinterDashboard"
 import Login from './login';
 import Signup from './signup';
+import Orderdashboard from './orderdashboard'
 
 function App() {
  
@@ -25,6 +26,7 @@ function App() {
         <Route path='Product/:productId' element={<Product />} />
         <Route path='Dashboard' element={<Dashboard />} />
         <Route path='Winter' element={<WinterDashboard />} />
+        <Route path='Orderdashboard' element={<Orderdashboard />} />
        
     </Routes>
     </BrowserRouter>

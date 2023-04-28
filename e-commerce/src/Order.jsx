@@ -8,42 +8,44 @@ import whatsapp from "./images/whatsapp.png";
 import instagram from "./images/instagram.png";
 import gmail from "./images/gmail.png";
 import React, { useState, useEffect } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import NavBar from "./NavBar";
-import Footer from './Footer';
-import swal from 'sweetalert';
+import Footer from "./Footer";
+import swal from "sweetalert";
 
-
-import { toast, ToastContainer, useToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
+import { toast, ToastContainer, useToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Order() {
-
-
-
-
   const sendEmail = () => {
-    emailjs.send('service_phdrfzg', 'template_j3wte84', {
-      to_email: 'badranrasha685@gmail.com',
-      message: 'Hello, this is a static message sent from the Contact Us form.'
-    }, 'bsgzj8RCp8iMedk0g')
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
+    emailjs
+      .send(
+        "service_phdrfzg",
+        "template_j3wte84",
+        {
+          to_email: "badranrasha685@gmail.com",
+          message:
+            "Hello, this is a static message sent from the Contact Us form.",
+        },
+        "bsgzj8RCp8iMedk0g"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
-  const [cartItems, setCartItems] = useState(JSON.parse(localStorage.getItem("cartItems")) || []);
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems")) || []
+  );
   const [quantity, setQuantity] = useState(1);
   const [cartquantity, setcartQuantity] = useState();
   const [totallPrice, setTotalPrice] = useState();
-  const [phoneNum, setPhoneNum] = useState(sessionStorage.getItem('phone'));
-  const [address, setAddress] = useState(sessionStorage.getItem('address'))
-
-
-
+  const [phoneNum, setPhoneNum] = useState(sessionStorage.getItem("phone"));
+  const [address, setAddress] = useState(sessionStorage.getItem("address"));
 
   // const phone = sessionStorage.getItem('phone');
   // const adre = sessionStorage.getItem('address');
@@ -51,41 +53,29 @@ function Order() {
   // setAddress(sessionStorage.getItem('address'))
   function deleteProductFromLocalStorage(id) {
     const updatedProducts = cartItems.filter((product) => product._id !== id);
-    localStorage.setItem('cartItems', JSON.stringify(updatedProducts));
+    localStorage.setItem("cartItems", JSON.stringify(updatedProducts));
   }
 
-
-
-  const [canorder, setcanorder] = useState(true)
+  const [canorder, setcanorder] = useState(true);
 
   function checkUserRole() {
-    const userRole = sessionStorage.getItem('role');
-    const token = sessionStorage.getItem('token');
-
+    const userRole = sessionStorage.getItem("role");
+    const token = sessionStorage.getItem("token");
 
     // Get the user's role from session storage
     if (!token || !userRole) {
       // User has the 'user' role, so navigate to the desired page
 
-      setcanorder(false)
-
-    }
-    else {
-
-      setcanorder(true)
+      setcanorder(false);
+    } else {
+      setcanorder(true);
     }
   }
 
-
   useEffect(() => {
-
-
-    checkUserRole()
-    totalcalculator()
-
+    checkUserRole();
+    totalcalculator();
   }, [canorder]);
-
-
 
   const totalcalculator = () => {
     const cartquan = cartItems.map((item) => item.quantity);
@@ -100,23 +90,15 @@ function Order() {
       item.totalprice = cartquan[i] * cartprice[i];
       carttwo.push(item);
       total += item.totalprice;
-
-
     }
-    console.log("totallll", total)
+    console.log("totallll", total);
     setTotalPrice(total);
-  }
-
-
-
-
-
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (canorder) {
-
       sendEmail();
       const cartitemid = cartItems.map((item) => item._id);
       const cartquan = cartItems.map((item) => item.quantity);
@@ -157,28 +139,23 @@ function Order() {
       });
       const data = await response.json();
       console.log(data);
-      toast.success('your order is sent ', { position: toast.POSITION.TOP_RIGHT });
+      toast.success("your order is sent ", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       localStorage.clear();
-      delayedRefresh()
-
-
+      delayedRefresh();
+    } else {
+      toast.error("please sign in to continue this order", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
     }
-    else {
-      toast.error('please sign in to continue this order', { position: toast.POSITION.TOP_RIGHT });
-    }
-
   };
-
-
-
-
 
   const delayedRefresh = () => {
     setTimeout(function () {
       window.location.reload();
     }, 5000); // 5000 milliseconds = 5 seconds
-  }
-
+  };
 
   function handleProductClick(id) {
     swal({
@@ -187,22 +164,20 @@ function Order() {
       icon: "warning",
       buttons: ["Cancel", "Yes, delete it!"],
       dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          deleteProductFromLocalStorage(id);
-          const updatedCartItems = cartItems.filter((item) => item._id !== id);
-          setCartItems(updatedCartItems);
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteProductFromLocalStorage(id);
+        const updatedCartItems = cartItems.filter((item) => item._id !== id);
+        setCartItems(updatedCartItems);
 
-          swal("Poof! Your file has been deleted!", {
-            icon: "success",
-          });
-          window.location.reload();
-        } else {
-          swal("Your Order is safe!");
-        }
-      });
-
+        swal("Poof! Your file has been deleted!", {
+          icon: "success",
+        });
+        window.location.reload();
+      } else {
+        swal("Your Order is safe!");
+      }
+    });
   }
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -221,35 +196,28 @@ function Order() {
       icon: "warning",
       buttons: ["Cancel", "Yes, delete it!"],
       dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (willDelete) {
-          localStorage.clear();
-          window.location.reload();
-          swal("Poof! Your file has been deleted!", {
-            icon: "success",
-          });
-          window.location.reload();
-        } else {
-          swal("Your Order is safe!");
-        }
-      });
-
+    }).then((willDelete) => {
+      if (willDelete) {
+        localStorage.clear();
+        window.location.reload();
+        swal("Poof! Your file has been deleted!", {
+          icon: "success",
+        });
+        window.location.reload();
+      } else {
+        swal("Your Order is safe!");
+      }
+    });
   }
-
-
 
   {
     console.log("cart", cartItems);
   }
 
-  useEffect(() => {
-
-  }, [totallPrice]);
+  useEffect(() => {}, [totallPrice]);
 
   return (
     <>
-
       <NavBar />
       <ToastContainer />
       <p className="Orders-page">Orders</p>
@@ -264,13 +232,25 @@ function Order() {
                 </div>
                 <p className="desOrder">Size: {item.size}</p>
                 <p className="desOrder">Color: {item.color}</p>
-                <p className="orderPrice desOrder">Price: {item.price == item.priceAfterDiscount ? <h4 className="childPrice">{item.price}$</h4> :
-                  <h4 className="childPrice,desOrder">{item.priceAfterDiscount}</h4>}</p>
+                <p className="orderPrice desOrder">
+                  Price:{" "}
+                  {item.price == item.priceAfterDiscount ? (
+                    <h4 className="childPrice">{item.price}$</h4>
+                  ) : (
+                    <h4 className="childPrice,desOrder">
+                      {item.priceAfterDiscount}
+                    </h4>
+                  )}
+                </p>
                 <p className="desOrder">Quantity: {item.quantity}</p>
 
-
                 <div className="quantity">
-                  <img className="delete-icon" onClick={() => handleProductClick(item._id)} src={del} alt="" />
+                  <img
+                    className="delete-icon"
+                    onClick={() => handleProductClick(item._id)}
+                    src={del}
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -292,8 +272,17 @@ function Order() {
             <p>Cash on delivery</p>
           </div>
         </div>
-        <button className="order-check" onClick={(event) => { handleSubmit(event) }}>Place Order</button>
-        <button className="orderalldelete" onClick={() => clearLocalStorage()}>Delete Order</button>
+        <button
+          className="order-check"
+          onClick={(event) => {
+            handleSubmit(event);
+          }}
+        >
+          Place Order
+        </button>
+        <button className="orderalldelete" onClick={() => clearLocalStorage()}>
+          Delete Order
+        </button>
       </div>
 
       <div>
