@@ -1,9 +1,9 @@
 import './Home.css';
 import logo from "../src/images/logo.png"
 import cartlogo from "../src/images/cartlogo.png"
-import slider1 from "../src/images/slider1.jpeg"
-import slider2 from "../src/images/slider2.jpg"
-import slider3 from "../src/images/slider3.jpg"
+import slider1 from "../src/images/slide11.jpeg"
+import slider2 from "../src/images/slide22.jpeg"
+import slider3 from "../src/images/slide33.jpeg"
 import slider4 from "../src/images/slider4.jpg"
 import jacket from "../src/images/jacket.png"
 import rightarrow from "../src/images/arrowright.png"
@@ -38,7 +38,7 @@ const loadCategories = async () => {
   const imagesss=[
     {src:slider2, alt:"Image 1"},
     {src:slider3, alt:"Image 2"},
-    {src:slider4, alt:"Image 3"}
+    {src:slider1, alt:"Image 3"}
   ]
 const delay = 2500;
 
@@ -162,7 +162,12 @@ const delay = 2500;
     { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
     <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
-      <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+      
+      
+    <Link  to={`/ProductsPage/${item._id}`}  className='child-image-button'>
+     <p className='paragraph-product'>  {item.name}</p>
+       <img src={Arrow} alt="" srcSet="" />
+      </Link>
     </div>
   ))}
 </div>
@@ -210,7 +215,9 @@ const delay = 2500;
            { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
               <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
-            <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+            <Link  to={`/ProductsPage/${item._id}`}  className='child-image-button'>
+            <p className='paragraph-product'>
+ {item.name} </p><img src={Arrow} alt=""  /></Link>
           </div>
         ))}
                         </div>

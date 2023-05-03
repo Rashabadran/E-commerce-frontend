@@ -1,5 +1,5 @@
 # Dockerfile for frontend
-FROM node:14
+FROM node:17-alpine
 
 WORKDIR /app
 
