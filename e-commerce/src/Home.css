@@ -512,21 +512,78 @@ li {
     margin: 0rem 3.5rem;
   }
   .scroll-devos {
-    margin-left: 5%;
+    margin-left: 1%;
   }
   .scroll-devs {
-    margin-left: 5%;
+    margin-left: 1%;
   }
+  .navbar-container {
+    height: 10vw;
+  }
+  .nav-buttons {
+    font-size: 2.4vw;
+    margin-left: -0.8rem;
+    margin-top: 1rem;
+  }
+
+.slideshowDot{
+  height: 13px;
+  width: 13px;
+}
+.slideP{
+  height: 294px;
+}
+.arrows-heights{
+  width: 9.5vw;
 }
 
-@media only screen and (max-width: 350px) {
-  .child {
-    min-width: 44vw;
-    height: 17rem;
-    margin: 0rem 2.5rem;
+.cover{
+  width: 76%;
+}
+.pablo-description {
+  height: 87vw;
+}
+.description-header {
+  font-size: 6vw;
+}
+.description-description {
+  font-size: 4vw;
+}
+.footer-second-p {
+  font-size: 2.5vw;
+}
+.footer-first-p {
+  font-size: 2.5vw;
+
+}
+
+.footer {
+    height: 30vw;
+}
+.button-footer-background {
+  width: 2rem;
+  height: 2rem;
+}
+.social-icons{
+  margin-right: -3rem;
+}
+
+.heading-collection{
+margin-top: 2rem;
+}
+.heading-collection {
+  font-size: 5vw;
+}
   }
-  .parent-arrow {
-    margin-top: 13rem;
+  
+  @media only screen and (max-width: 350px){
+    .child {
+      min-width: 44vw;
+      height: 17rem;
+      margin:0rem 2.5rem;
+    }
+    .parent-arrow {
+      margin-top: 13rem;
   }
 
   .winter-collection {

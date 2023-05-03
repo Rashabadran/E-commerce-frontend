@@ -48,7 +48,7 @@ return(
 
 
 
-        <div>
+        <div className='social-icons'>
 
 
           <p className='footer-second-p'> Stay IN TOUCH:</p>
