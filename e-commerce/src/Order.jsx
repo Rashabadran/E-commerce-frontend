@@ -24,14 +24,14 @@ function Order() {
   const sendEmail = () => {
     emailjs
       .send(
-        "service_phdrfzg",
-        "template_j3wte84",
+        "service_jd5xzbk",
+        "template_ydo1j6i",
         {
           to_email: "badranrasha685@gmail.com",
           message:
             "Hello, this is a static message sent from the Contact Us form.",
         },
-        "bsgzj8RCp8iMedk0g"
+        "OZH-I9C8SPG44RNKZ"
       )
       .then(
         (result) => {

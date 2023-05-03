@@ -161,6 +161,46 @@
     font-size: 1rem;
     margin: 0.5rem 0;
   }
+  .navbar-container {
+    width: 100%;
+    background-color: #000000;
+    height: 10vh; /* using vh instead of vw for height */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* using space-between instead of space-around */
+    padding: 0 10px; /* adding some padding to the sides */
+    align-items: center;
+    column-gap: 2rem;
+  }
+  
+  .logoimg {
+    height: 100%;
+    max-width: 100%; /* setting a max-width for the logo image */
+  }
+  
+  .nav-buttons {
+    color: white;
+    font-size: 3vw; /* using vw instead of vw for font-size */
+    margin: auto 0; /* centering the text vertically */
+  }
 
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* tablet styles */
+  .navbar-container {
+    height: 60px; /* setting a fixed height */
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px; /* adding some more padding to the sides */
+  }
 
+  .logoimg {
+    max-height: 50px; /* reducing the max-height of the logo */
+    max-width: none; /* removing the max-width constraint */
+  }
+
+  .nav-buttons {
+    font-size: 1.2rem; /* using a fixed font-size */
+    margin: 0; /* removing the vertical margin */
+  }
 }
