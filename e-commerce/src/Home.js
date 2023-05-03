@@ -18,6 +18,7 @@ import { useState, useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from "./NavBar";
 import Footer from './Footer';
+
 function App() {
 
 const [categoryFetching,setCategory]=useState([])
@@ -162,7 +163,7 @@ const delay = 2500;
     { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
     <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
-      <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+      <button className='child-image-button'>{item.name} <img src={Arrow} alt=""  /></button>
     </div>
   ))}
 </div>
@@ -210,7 +211,7 @@ const delay = 2500;
            { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
               <Link to={`/ProductsPage/${item._id}`}>
       <img className='child-image' src={item.image.url} alt={item.name} /></Link>
-            <button className='child-image-button'>{item.name} <img src={Arrow} alt="" srcSet="" /></button>
+            <button className='child-image-button'>{item.name} <img src={Arrow} alt=""  /></button>
           </div>
         ))}
                         </div>
@@ -248,6 +249,10 @@ const delay = 2500;
        
 
       </div>
+
+
+
+    
 
 
 
