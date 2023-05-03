@@ -10,18 +10,18 @@ import emailjs from "emailjs-com";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import del from "./images/del.png";
-import { Link } from 'react-router-dom';
-import axios from "axios"
+import { Link } from "react-router-dom";
+import axios from "axios";
 import swal from "sweetalert";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Orderdashbord() {
-   useEffect(() => {
+  useEffect(() => {
     console.clear();
   }, []);
-  
+
   const [data, setData] = useState([]);
   const [cartStuff, setCartStuff] = useState([]);
 
@@ -34,18 +34,19 @@ function Orderdashbord() {
     }
 
     fetchData();
-    checkUserRole()
+    checkUserRole();
   }, [data]);
-
 
   const handleProductClick = async (id) => {
     startSessionTimer();
-    const response = await axios.delete(`http://localhost:3030/api/orders/${id}`)
+    const response = await axios.delete(
+      `http://localhost:3030/api/orders/${id}`
+    );
     // console.log(response)
-    toast.success('deleted  successfully!', { position: toast.POSITION.TOP_RIGHT });
-  }
-
-
+    toast.success("deleted  successfully!", {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
 
   function resetSession() {
     sessionStorage.clear(); // Clear the session storage
@@ -62,31 +63,21 @@ function Orderdashbord() {
     startSessionTimer(); // Start the session timer again
   }
 
-
-
   startSessionTimer();
-
-
-
 
   const navigate = useNavigate();
 
-
   function checkUserRole() {
-    const userRole = sessionStorage.getItem('role');
-    const token = sessionStorage.getItem('token');
-
+    const userRole = sessionStorage.getItem("role");
+    const token = sessionStorage.getItem("token");
 
     // Get the user's role from session storage
-    if (!token || userRole === 'user') {
+    if (!token || userRole === "user") {
       // User has the 'user' role, so navigate to the desired page
 
       navigate("/Login", { replace: true });
     }
   }
-
-
-
 
   return (
     <>
@@ -95,63 +86,38 @@ function Orderdashbord() {
           <img className="logoimg" src={logo} alt="" />
         </div>
 
-
-
         <div>
           {/* winterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrcategoryyyyyyyyyyyyyyyyyyyyyyyy */}
           <Link to="/Winter">
             <p className="nav-buttons">Winter Categories</p>
           </Link>
-
         </div>
-
-
 
         <div>
           {/* summmmmer category  */}
           <Link to="/Dashboard">
             <p className="nav-buttons">Summer Categories</p>
           </Link>
-
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div>
-
           <Link to="/Orderdashboard ">
             <p className="nav-buttons">Orders</p>
           </Link>
         </div>
 
-
-
         {/* clear the session and go to the login  */}
 
         <div>
-
-          <Link to="/Login" onClick={() => { sessionStorage.clear(); }}>
+          <Link
+            to="/Login"
+            onClick={() => {
+              sessionStorage.clear();
+            }}
+          >
             <p className="nav-buttons">Sign out</p>
           </Link>
-
         </div>
-
-
-
-
       </div>
       <ToastContainer />
       <p className="Ordersdash-page">Orders</p>
