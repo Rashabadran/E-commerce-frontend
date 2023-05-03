@@ -374,6 +374,10 @@ li {
     height: 17rem;
     margin: 0rem 3rem;
   }
+  .winter-collection {
+    height: 30vw;
+    margin-bottom: 10vw;
+}
 }
 
 @media only screen and (max-width: 1020px) {
@@ -387,7 +391,6 @@ li {
   }
   .winter-collection {
     height: 30vw;
-
     margin-bottom: 17vw;
   }
   .scroll-devs {
@@ -407,7 +410,7 @@ li {
   .scroll-devs {
     margin-bottom: 3%;
   }
-  heading-collection {
+  .heading-collection {
     margin-bottom: 1rem;
   }
   .scroll-devs {
@@ -416,9 +419,12 @@ li {
   .scroll-devos {
     margin-left: 6%;
   }
+  .navigation-buttons {
+    width: 43%;
+  }
 }
 
-@media only screen and (max-width: 830px) {
+@media only screen and (max-width: 850px) {
   .child {
     min-width: 28vw;
     height: 15rem;
@@ -431,6 +437,10 @@ li {
   .parent-arrow {
     margin-top: 2rem;
   }
+  .navigation-buttons {
+    width: 45%;
+  }
+
 }
 @media only screen and (max-width: 730px) {
   .child {
@@ -455,6 +465,9 @@ li {
   .parent-arrow {
     margin-top: 5rem;
   }
+  .logoimg {
+    max-width: 78%;
+}
 }
 
 @media only screen and (max-width: 630px) {
@@ -471,6 +484,12 @@ li {
   .parent-arrow {
     margin-top: 7rem;
   }
+  .navigation-buttons {
+    width: 52%;
+  }
+  .last-header{
+    width: 7rem;
+  }
 }
 
 @media only screen and (max-width: 520px) {
@@ -485,6 +504,20 @@ li {
     width: 2rem;
     height: 1rem;
   }
+
+  .navigation-buttons {
+    width: 76%;
+}
+
+.pablo-description {
+  height: 47vw;
+}
+.description-description {
+  font-size: 3vw;
+}
+.description-header {
+  font-size: 3vw;
+}
 }
 
 @media only screen and (max-width: 470px) {
@@ -506,6 +539,7 @@ li {
 }
 
 @media only screen and (max-width: 400px) {
+  
   .child {
     min-width: 43vw;
     height: 13rem;
@@ -524,6 +558,9 @@ li {
     font-size: 2.4vw;
     margin-left: -0.8rem;
     margin-top: 1rem;
+  }
+  .navigation-buttons{
+    width: 100%;
   }
 
 .slideshowDot{
@@ -564,9 +601,9 @@ li {
   width: 2rem;
   height: 2rem;
 }
-.social-icons{
-  margin-right: -3rem;
-}
+/* .social-icons{
+  padding-right: 1rem;
+} */
 
 .heading-collection{
 margin-top: 2rem;
@@ -593,6 +630,12 @@ margin-top: 2rem;
   .child-image-button {
     height: 4vw;
   }
+  .navigation-buttons {
+    width: 164%;
+}
+.last-header {
+  width: 10rem;
+}
 }
 
 @media only screen and (max-width: 300px) {
