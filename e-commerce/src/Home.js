@@ -82,20 +82,20 @@ const delay = 2500;
 
   const scrollr = () => {
     var right = document.querySelector(".scroll-devs");
-    right.scrollBy(-380, 0)
+    right.scrollBy(-280, 0)
   }
 
 
 
   const scrollsec = () => {
     var left = document.querySelector(".scroll-devos");
-    left.scrollBy(380, 0)
+    left.scrollBy(280, 0)
   }
 
 
   const scrollrsec = () => {
     var right = document.querySelector(".scroll-devos");
-    right.scrollBy(-380, 0)
+    right.scrollBy(-280, 0)
   }
 
 
