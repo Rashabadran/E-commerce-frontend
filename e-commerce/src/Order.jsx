@@ -234,7 +234,7 @@ function Order() {
                 </div>
                 <p className="desOrder">Size: {item.size}</p>
                 <p className="desOrder">Color: {item.color}</p>
-                <p className="orderPrice desOrder">
+                <div  className="orderPrice desOrder">
                   Price:{" "}
                   {item.price == item.priceAfterDiscount ? (
                     <h4 className="childPrice">{item.price}$</h4>
@@ -243,7 +243,7 @@ function Order() {
                       {item.priceAfterDiscount}
                     </h4>
                   )}
-                </p>
+                </div>
                 <p className="desOrder">Quantity: {item.quantity}</p>
 
                 <div className="quantity">

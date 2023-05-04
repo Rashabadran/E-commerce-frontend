@@ -13,12 +13,6 @@ function Login() {
 
 
 
-//        useEffect(() => {
-//     console.clear();
-//   }, []);
-
-
-
 
 
     const navigate = useNavigate();

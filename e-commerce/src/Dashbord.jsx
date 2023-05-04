@@ -52,9 +52,7 @@ function Dashboard() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.clear();
-  }, []);
+
 
   function checkUserRole() {
     const userRole = sessionStorage.getItem('role');
@@ -655,11 +653,11 @@ function Dashboard() {
 
         <h1>Add Category </h1>
 
-        <label for="name"><b>Name</b></label>
+        <label ><b>Name</b></label>
         <input type="text" placeholder="Enter category name" value={catname} onChange={e => setCatname(e.target.value)} required />
         <br />
 
-        <label for="psw"><b>Season</b></label>
+        <label ><b>Season</b></label>
         <input type="text" value={season} onChange={e => setSeason(e.target.value)} />
         <br />
 
@@ -669,7 +667,7 @@ function Dashboard() {
         <input type="text" value={sale} onChange={e => setSale(e.target.value)} />
         <br />
         <div>
-          <label htmlFor="images">Choose Images:</label><br />
+          <label >Choose Images:</label><br />
           <input type="file" name="file" onChange={handleImage} /><br />
 
         </div>
@@ -704,11 +702,11 @@ function Dashboard() {
 
         <h1>Add Products </h1>
 
-        <label for="text"><b>Title</b></label>
+        <label ><b>Title</b></label>
         <input type="text" placeholder="Enter the product name" name="title" required onChange={e => setTitle(e.target.value)} />
         <br />
 
-        <label for="psw"><b>Price</b></label>
+        <label ><b>Price</b></label>
         <input type="text" placeholder="Enter price" name="psw" required onChange={e => setPrice(e.target.value)} />
         <br />
 
@@ -728,7 +726,7 @@ function Dashboard() {
 
 
         <div>
-          <label htmlFor="images">Choose Images:</label>
+          <label >Choose Images:</label>
           <br />
           <input type="file" id="images" name="file" onChange={handleProductImage} multiple />
           <br />
@@ -772,11 +770,11 @@ function Dashboard() {
         <h1>Edit  Products </h1>
         {/* {productsdata&&productsdata.map((item, index) => (
     <> */}
-        <label for="text"><b>Title</b></label>
+        <label ><b>Title</b></label>
         <input type="text" placeholder={productsdata && productsdata.title} name="title" required onChange={(e) => { setedittitle(e.target.value) }} />
         <br />
 
-        <label for="psw"><b>Price</b></label>
+        <label ><b>Price</b></label>
         <input type="text" placeholder={productsdata && productsdata.price} name="psw" required onChange={(e) => { seteditPrice(e.target.value) }} />
         <br />
 
