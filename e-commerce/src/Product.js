@@ -191,14 +191,14 @@ function handleButtonClick(event) {
     <div className="imagesProduct">
     <NavBar/>
       <div className='allProducts'>
-      <Carousel interval={null}>
+      <Carousel className="carouselSlide" interval={null}>
         {images.map((image, index) => (
           <Carousel.Item key={index}>
             <img
               src={image.url}
               imageHeight={800}
               imageWidth={1000}
-              className="imageProductResize"
+              className="imageProductResizeP"
             />
           </Carousel.Item>
         ))}
