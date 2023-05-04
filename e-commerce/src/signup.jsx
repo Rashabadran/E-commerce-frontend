@@ -14,9 +14,6 @@ function Signup() {
 
 
 
-    useEffect(() => {
-    console.clear();
-  }, []);
 
 
 
@@ -159,7 +156,7 @@ function Signup() {
                     <button className="submit-signup" onClick={() => submitregistration()}>Submit</button>
 
                     <div className="login-word">
-                        
+
                         <Link to="/Login">    <h4>Login</h4></Link>
                     </div>
                 </div>

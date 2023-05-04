@@ -48,7 +48,7 @@ function NavBar() {
     <div className='navbar-container'>
 
       <div>
-        <img className='logoimg' src={logo} alt="" srcset="" />
+        <img className='logoimg' src={logo} alt="" />
       </div>
 
 

@@ -33,10 +33,7 @@ function Product() {
   const [title,setTitle]=useState("");
   const [price,setPrice]=useState();
   // const { productId } = match.params;
-   
-     useEffect(() => {
-    console.clear();
-  }, []);
+
 
 // Get all size and color buttons
 const sizeButtons = document.querySelectorAll('.sizeDetailsName');
@@ -150,10 +147,10 @@ function handleButtonClick(event) {
   }
 
 
-  const sizeListItems = sizes.map((size) => (
+  const sizeListItems = sizes.map((size,index) => (
     <button
       className="sizeDetailsName"
-      key={size.id}
+      key={index}
       value={size}
       onClick={handleSizeClick}
     >
@@ -164,10 +161,10 @@ function handleButtonClick(event) {
   ));
 
   
-  const colorListItems = colors.map((color) =>
+  const colorListItems = colors.map((color,index) =>
     <button
       className="colorDetailsName"
-      key={color.id}
+      key={index}
       value={color}
       onClick={handleColorClick}
     >
@@ -196,8 +193,7 @@ function handleButtonClick(event) {
           <Carousel.Item key={index}>
             <img
               src={image.url}
-              imageHeight={800}
-              imageWidth={1000}
+              
               className="imageProductResizeP"
             />
           </Carousel.Item>

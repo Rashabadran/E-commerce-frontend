@@ -25,9 +25,7 @@ function ProductsPage() {
     setCardImages(res.data.map((item,index) => item.image[0]));
   };
   
-     useEffect(() => {
-    console.clear();
-  }, []);
+
 
  
   useEffect(() => {
