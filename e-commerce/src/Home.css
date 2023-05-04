@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+.paragraph-product {
+  color: white;
+  padding-top: 5%;
+  font-size: 1vw;
+}
+
 .slideshowSlider {
   white-space: nowrap;
   transition: ease 1000ms;
@@ -304,7 +310,7 @@ li {
 
 @media only screen and (max-width: 1600px) {
   .cover {
-    height: 87%;
+    height: 18vh;
     width: 80%;
     padding-left: 2%;
   }
@@ -317,7 +323,7 @@ li {
 
   .child-image {
     width: 25vh;
-    height: 85%;
+    height: 19vh;
   }
   .scroll-collection {
     width: 100%;
@@ -343,6 +349,27 @@ li {
           width: 80%;
           padding-left: 2%;
         }
+
+
+
+
+
+.child {
+  min-width: 28vw;
+  height: 25vw;
+}
+
+.child-image-button {
+  height: 3vw;
+}
+
+.winter-collection {
+  height: 30vw;
+  margin-bottom: 6vw;
+}
+.paragraph-product {
+  font-size: 2vw;
+}
   
 }
 
@@ -401,6 +428,39 @@ li {
   .navigation-buttons {
     width: 43%;
   }
+
+
+     .cover {
+       height: 87%;
+       width: 80%;
+       padding-left: 2%;
+     }
+  
+  
+  
+  
+  
+     .child {
+       min-width: 28vw;
+       height: 30vw;
+     }
+  
+     .child-image-button {
+       height: 3vw;
+     }
+  
+     .winter-collection {
+       height: 30vw;
+       margin-bottom: 12vw;
+     }
+  
+     .paragraph-product {
+       font-size: 2vw;
+     }
+
+
+
+
 }
 
 @media only screen and (max-width: 850px) {
@@ -411,7 +471,7 @@ li {
   } */
   .winter-collection {
     height: 30vw;
-    margin-bottom: 20vw;
+    margin-bottom: 40vw;
   }
   .parent-arrow {
     margin-top: 2rem;
@@ -629,11 +689,7 @@ margin-top: 2rem;
 }
 
 
-.paragraph-product{
-  color: white;
-  padding-top: 5%;
-  font-size: 1vw;
-}
+
 @media  only screen and (max-width: 750px) {
 
 .paragraph-product {
@@ -650,7 +706,7 @@ margin-top: 2rem;
 
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
 
   .paragraph-product {
     color: white;
@@ -659,11 +715,11 @@ margin-top: 2rem;
   }
 
   .child {
-    min-width: 50%;
-    height: 40vw;
+    min-width: 60vw;
+    height: 60vw;
   }
 
   .child-image-button {
-    height: 5vw;
+    height: 8vw;
   }
 }

@@ -145,7 +145,7 @@ const delay = 2500;
 
       <div className='winter-collection'>
 
-        <p className='heading-collection' id="winterCollection">winter collection </p>
+        <p className='heading-collection' id="winterCollection">Winter collection </p>
 
         <div className='scroll-collection'>
           <div className='parent-arrow'>
