@@ -47,8 +47,8 @@ function Login() {
         try {
             const data = { email: username, password: password };
             const response = await axios.post(`http://localhost:3030/users/login`, data);
-            console.log(response.data.role);
-            console.log(response.data.token);
+            // console.log(response.data.role);
+            // console.log(response.data.token);
             if (response.data.role == "admin") {
                 sessionStorage.setItem('id', response.data._id);
                 sessionStorage.setItem('token', response.data.token);
@@ -103,7 +103,7 @@ function Login() {
                     <button className="submit-login" onClick={() => submitlogin()}>Submit</button>
 
                     <div className="signup-word">
-                        
+
 
                         <Link to="/signup">  <h4>Register</h4></Link>
                     </div>
