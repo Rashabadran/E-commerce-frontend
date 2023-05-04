@@ -11,7 +11,7 @@
 .slideP {
   display: inline-block;
 
-  height: 400px;
+  height: 35vw;
   width: 100%;
 }
 a {
@@ -135,12 +135,13 @@ li {
 }
 
 .cover {
-  position: relative;
-  width: 80%;
+    height: 87%;
+      width: 90%;
+      padding-left: 2%;
 }
 
 .scroll-devs {
-  width: 82%;
+  width: 96%;
   height: auto;
   display: flex;
   justify-content: left;
@@ -148,11 +149,11 @@ li {
   overflow: hidden;
   position: relative;
   scroll-behavior: smooth;
-  margin-left: 10%;
+  
 }
 
 .scroll-devos {
-  width: 82%;
+  width: 96%;
   height: auto;
   display: flex;
   justify-content: left;
@@ -160,26 +161,28 @@ li {
   overflow: hidden;
   position: relative;
   scroll-behavior: smooth;
-  margin-left: 10%;
+ 
 }
 
 .child {
   min-width: 19vw;
-  height: 431px;
+  height: 471px;
   margin: 8px 22px;
   cursor: pointer;
   border: 2px solid grey;
   border-radius: 35px;
   overflow: hidden;
   align-items: center;
+  justify-content: flex-end;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  /* padding-top: 5%; */
 }
 
 .child-image {
   width: 290px;
-  height: 285px;
+  height: 12vw;
 }
 
 .leftarrow {
@@ -189,7 +192,7 @@ li {
 
 .arrows-heights {
   height: 100%;
-  width: 3.5vw;
+    width: 100%;
 }
 
 .parent-arrow {
@@ -303,77 +306,64 @@ li {
   .cover {
     height: 87%;
     width: 80%;
+    padding-left: 2%;
   }
-
+/* 
   .child {
     min-width: 24vw;
     height: 17rem;
     margin: 0rem 5rem;
-  }
+  } */
 
   .child-image {
-    width: 150px;
-    height: 100px;
+    width: 25vh;
+    height: 85%;
   }
   .scroll-collection {
     width: 100%;
     height: 89%;
   }
-  .scroll-devs {
-    width: 87%;
-    margin-left: 8%;
-  }
-  .scroll-devos {
-    width: 87%;
-    margin-left: 8%;
-  }
+
+
 }
 
 @media only screen and (max-width: 1500px) {
-  .scroll-devs {
-    margin-left: 7%;
-  }
-  .scroll-devos {
-    margin-left: 7%;
-  }
+
+        .cover {
+          height: 87%;
+          width: 80%;
+          padding-left: 2%;
+        }
+
 }
 @media only screen and (max-width: 1400px) {
-  .scroll-devs {
-    margin-left: 5%;
-  }
-  .scroll-devos {
-    margin-left: 5%;
-  }
+
+        .cover {
+          height: 87%;
+          width: 80%;
+          padding-left: 2%;
+        }
+  
 }
 
 @media only screen and (max-width: 1190px) {
-  .scroll-devs {
-    margin-left: 4%;
-  }
 
-  .scroll-devos {
-    margin-left: 4%;
-  }
   .heading-collection {
     margin-bottom: 1rem;
   }
   .cover {
     height: 87%;
-    width: 83%;
+    width: 80%;
+    padding-left: 2%;
   }
 }
 @media only screen and (max-width: 1100px) {
-  .scroll-devs {
-    margin-left: 6%;
-  }
-  .scroll-devos {
-    margin-left: 6%;
-  }
-  .child {
+  
+  /* .child {
     min-width: 26vw;
     height: 17rem;
     margin: 0rem 3rem;
-  }
+  } */
   .winter-collection {
     height: 30vw;
     margin-bottom: 10vw;
@@ -381,11 +371,11 @@ li {
 }
 
 @media only screen and (max-width: 1020px) {
-  .child {
+  /* .child {
     min-width: 26vw;
     height: 17rem;
     margin: 0rem 3rem;
-  }
+  } */
   .heading-collection {
     margin-bottom: 1rem;
   }
@@ -393,43 +383,32 @@ li {
     height: 30vw;
     margin-bottom: 17vw;
   }
-  .scroll-devs {
-    margin-left: 6%;
-  }
-  .scroll-devos {
-    margin-left: 6%;
-  }
+  
 }
 
 @media only screen and (max-width: 1000px) {
-  .child {
+  /* .child {
     min-width: 26vw;
     height: 15rem;
     margin: 0rem 3rem;
-  }
-  .scroll-devs {
-    margin-bottom: 3%;
-  }
+  } */
+
   .heading-collection {
     margin-bottom: 1rem;
   }
-  .scroll-devs {
-    margin-left: 6%;
-  }
-  .scroll-devos {
-    margin-left: 6%;
-  }
+
+
   .navigation-buttons {
     width: 43%;
   }
 }
 
 @media only screen and (max-width: 850px) {
-  .child {
+  /* .child {
     min-width: 28vw;
     height: 15rem;
     margin: 0rem 2rem;
-  }
+  } */
   .winter-collection {
     height: 30vw;
     margin-bottom: 20vw;
@@ -443,21 +422,17 @@ li {
 
 }
 @media only screen and (max-width: 730px) {
-  .child {
+  /* .child {
     min-width: 42vw;
     height: 17rem;
     margin: 0rem 7rem;
-  }
+  } */
   .winter-collection {
     height: 30vw;
     margin-bottom: 36vw;
   }
-  .scroll-devos {
-    margin-left: 4%;
-  }
-  .scroll-devs {
-    margin-left: 4%;
-  }
+
+
   .button-footer-background {
     width: 3rem;
     height: 2rem;
@@ -476,11 +451,11 @@ li {
     margin-bottom: 42vw;
   }
 
-  .child {
+  /* .child {
     min-width: 43vw;
     height: 17rem;
     margin: 0rem 5rem;
-  }
+  } */
   .parent-arrow {
     margin-top: 7rem;
   }
@@ -493,12 +468,12 @@ li {
 }
 
 @media only screen and (max-width: 520px) {
-  .child {
+  /* .child {
     min-width: 39vw;
     height: 14rem;
-  }
+  } */
   .child-image-button {
-    height: 5vw;
+    height: 9vw;
   }
   .button-footer-background {
     width: 2rem;
@@ -521,36 +496,33 @@ li {
 }
 
 @media only screen and (max-width: 470px) {
-  .child {
+  /* .child {
     min-width: 42vw;
     height: 15rem;
     margin: 0rem 3.5rem;
-  }
+  } */
   .winter-collection {
     height: 30vw;
     margin-bottom: 59vw;
   }
-  .scroll-devos {
-    margin-left: 9%;
+
+
+  .slideP{
+    height: 55vw;
   }
-  .scroll-devs {
-    margin-left: 9%;
-  }
+
 }
 
 @media only screen and (max-width: 400px) {
   
-  .child {
-    min-width: 43vw;
+  /* .child {
+    min-width: 47vw;
     height: 13rem;
     margin: 0rem 3.5rem;
-  }
-  .scroll-devos {
-    margin-left: 1%;
-  }
-  .scroll-devs {
-    margin-left: 1%;
-  }
+    border-radius: 10%;
+  } */
+
+
   .navbar-container {
     height: 10vw;
   }
@@ -571,11 +543,14 @@ li {
   height: 294px;
 }
 .arrows-heights{
-  width: 9.5vw;
+    height: 100%;
+      width: 100%;
 }
 
 .cover{
-  width: 76%;
+  width: 80%;
+  padding-left: 2%;
+
 }
 .pablo-description {
   height: 87vw;
@@ -614,11 +589,11 @@ margin-top: 2rem;
   }
   
   @media only screen and (max-width: 350px){
-    .child {
+    /* .child {
       min-width: 44vw;
       height: 17rem;
       margin:0rem 2.5rem;
-    }
+    } */
     .parent-arrow {
       margin-top: 13rem;
   }
@@ -643,20 +618,52 @@ margin-top: 2rem;
     margin-bottom: 81vw;
   }
 
-  .child {
-    min-width: 51vw;
-    height: 14rem;
-    margin: 0rem 1.5rem;
-  }
+
 }
 
 @media only screen and (max-width: 230px) {
-  .child {
-    min-width: 60vw;
-    height: 10rem;
-    margin: 0rem 0.5rem;
-  }
+
   .parent-arrow {
     margin-top: 7rem;
+  }
+}
+
+
+.paragraph-product{
+  color: white;
+  padding-top: 5%;
+  font-size: 1vw;
+}
+@media  only screen and (max-width: 750px) {
+
+.paragraph-product {
+    color: white;
+    padding-top: 5%;
+    font-size: 4vw;
+  }
+  .child{
+    min-width: 84%;
+    height: 67vw;
+  }
+
+}
+
+
+
+@media only screen and (max-width: 800px) {
+
+  .paragraph-product {
+    color: white;
+    padding-top: 5%;
+    font-size: 3vw;
+  }
+
+  .child {
+    min-width: 50%;
+    height: 40vw;
+  }
+
+  .child-image-button {
+    height: 5vw;
   }
 }

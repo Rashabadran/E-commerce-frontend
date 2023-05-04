@@ -159,8 +159,8 @@ function Signup() {
                     <button className="submit-signup" onClick={() => submitregistration()}>Submit</button>
 
                     <div className="login-word">
-                        <h2>have an account </h2>
-                        <Link to="/Login">    <h2>link login</h2></Link>
+                        
+                        <Link to="/Login">    <h4>Login</h4></Link>
                     </div>
                 </div>
             </div>
