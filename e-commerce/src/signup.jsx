@@ -14,9 +14,9 @@ function Signup() {
 
 
 
-//     useEffect(() => {
-//     console.clear();
-//   }, []);
+    //     useEffect(() => {
+    //     console.clear();
+    //   }, []);
 
 
 
@@ -92,7 +92,7 @@ function Signup() {
     const submitregistration = async () => {
         try {
             const data = { email: username, password: password, role: role, address: address, phone: phone, name: name };
-            const response = await axios.post(`http://localhost:3030/users`, data);
+            const response = await axios.post(`https://ecommerce-back-gaif.onrender.com/users`, data);
 
             // console.log(response.data.message)
             if (response.data.message == "User created successfully.") {

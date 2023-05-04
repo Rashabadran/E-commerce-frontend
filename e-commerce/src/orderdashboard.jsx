@@ -27,7 +27,7 @@ function Orderdashbord() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://localhost:3030/api/orders");
+      const response = await fetch("https://ecommerce-back-gaif.onrender.com/api/orders");
       const json = await response.json();
       setData(json);
       setCartStuff(json.map((item) => item.cart));
@@ -40,7 +40,7 @@ function Orderdashbord() {
   const handleProductClick = async (id) => {
     startSessionTimer();
     const response = await axios.delete(
-      `http://localhost:3030/api/orders/${id}`
+      `https://ecommerce-back-gaif.onrender.com/api/orders/${id}`
     );
     // console.log(response)
     toast.success("deleted  successfully!", {

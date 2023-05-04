@@ -129,7 +129,7 @@ function Dashboard() {
 
   const getProducts = async (cat_id) => {
     const response = await axios.get(
-      `http://localhost:3030/product/productbyCategory/${cat_id}`
+      `https://ecommerce-back-gaif.onrender.com/product/productbyCategory/${cat_id}`
     );
     const products = response.data.map((product) => ({
       title: product.title,
@@ -146,7 +146,7 @@ function Dashboard() {
 
   const deleteproduct = async (id) => {
     startSessionTimer();
-    const response = await axios.delete(`http://localhost:3030/product/deleteProduct/${id}`)
+    const response = await axios.delete(`https://ecommerce-back-gaif.onrender.com/product/deleteProduct/${id}`)
 
 
 
@@ -167,7 +167,7 @@ function Dashboard() {
 
   const getproductsbyid = async (id) => {
     startSessionTimer();
-    const response = await axios.get(`http://localhost:3030/product//productbyID/${id}`)
+    const response = await axios.get(`https://ecommerce-back-gaif.onrender.com/product//productbyID/${id}`)
     setproductsdata(response.data)
     // console.log(response.data)
     setedittitle(response.data.title)
@@ -184,7 +184,7 @@ function Dashboard() {
 
 
   const getCategories = async () => {
-    const response = await axios.get(`http://localhost:3030/cat/category/summer`);
+    const response = await axios.get(`https://ecommerce-back-gaif.onrender.com/cat/category/summer`);
     const categories = response.data.map((category) => ({
       id: category._id,
       name: category.name,
@@ -265,7 +265,7 @@ function Dashboard() {
     formData.append('image', image)
 
 
-    await axios.post("http://localhost:3030/cat", formData, {
+    await axios.post("https://ecommerce-back-gaif.onrender.com/cat", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -292,7 +292,7 @@ function Dashboard() {
 
     await axios
 
-      .put(`http://localhost:3030/cat/${cat_id}`, {
+      .put(`https://ecommerce-back-gaif.onrender.com/cat/${cat_id}`, {
         sale: Newsale
       })
 
@@ -310,7 +310,7 @@ function Dashboard() {
 
   const deletecategory = async (id) => {
     startSessionTimer();
-    const response = await axios.delete(`http://localhost:3030/cat/${id}`)
+    const response = await axios.delete(`https://ecommerce-back-gaif.onrender.com/cat/${id}`)
     // console.log(response.data)
 
 
@@ -373,7 +373,7 @@ function Dashboard() {
       formData.append("color[]", color[i]);
     }
 
-    await axios.post("http://localhost:3030/product/product", formData, {
+    await axios.post("https://ecommerce-back-gaif.onrender.com/product/product", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -405,7 +405,7 @@ function Dashboard() {
       editdata.color.push(editcolor[i]);
     }
 
-    const response = await axios.put(`http://localhost:3030/product/productUpdate/${Products_id}`, editdata);
+    const response = await axios.put(`https://ecommerce-back-gaif.onrender.com/product/productUpdate/${Products_id}`, editdata);
 
     // console.log("response", response);
     toast.success('Product updated  successfully!', { position: toast.POSITION.TOP_RIGHT });

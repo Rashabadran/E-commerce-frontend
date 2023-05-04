@@ -20,7 +20,7 @@ function ProductsPage() {
   const [images,setimages]=useState({})
   const [title,setTitle]=useState("")
   const loadAllProducts = async () => {
-    const res = await axios.get(`http://localhost:3030/product/productbyCategory/${category_id.category_id}`);
+    const res = await axios.get(`https://ecommerce-back-gaif.onrender.com/product/productbyCategory/${category_id.category_id}`);
     setCardDatas(res.data);
     setCardImages(res.data.map((item,index) => item.image[0]));
   };
@@ -35,7 +35,7 @@ function ProductsPage() {
   }, []);
 
   const loadTitle = async () => {
-    const res = await axios.get(`http://localhost:3030/cat/${category_id.category_id}`);
+    const res = await axios.get(`https://ecommerce-back-gaif.onrender.com/cat/${category_id.category_id}`);
     setTitle(res.data.name)
   };
 

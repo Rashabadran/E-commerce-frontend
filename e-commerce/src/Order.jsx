@@ -51,7 +51,7 @@ function Order() {
   const [phoneNum, setPhoneNum] = useState(sessionStorage.getItem("phone"));
   const [address, setAddress] = useState(sessionStorage.getItem("address"));
 
-  
+
   function deleteProductFromLocalStorage(id) {
     const updatedProducts = cartItems.filter((product) => product._id !== id);
     localStorage.setItem("cartItems", JSON.stringify(updatedProducts));
@@ -92,7 +92,7 @@ function Order() {
       carttwo.push(item);
       total += item.totalprice;
     }
-   
+
     setTotalPrice(total);
   };
 
@@ -121,11 +121,11 @@ function Order() {
         cart.push(item);
         total += item.totalprice;
       }
-      
 
-      
+
+
       // event.preventDefault();
-      const response = await fetch("http://localhost:3030/api/orders", {
+      const response = await fetch("https://ecommerce-back-gaif.onrender.com/api/orders", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -139,7 +139,7 @@ function Order() {
         }),
       });
       const data = await response.json();
-      
+
       toast.success("your order is sent ", {
         position: toast.POSITION.TOP_RIGHT,
       });
@@ -214,7 +214,7 @@ function Order() {
     });
   }
 
- 
+
 
   useEffect(() => { }, [totallPrice]);
 
@@ -234,7 +234,7 @@ function Order() {
                 </div>
                 <p className="desOrder">Size: {item.size}</p>
                 <p className="desOrder">Color: {item.color}</p>
-                <div  className="orderPrice desOrder">
+                <div className="orderPrice desOrder">
                   Price:{" "}
                   {item.price == item.priceAfterDiscount ? (
                     <h4 className="childPrice">{item.price}$</h4>

@@ -124,7 +124,7 @@ function handleButtonClick(event) {
 
   const loadSingleProduct = async () => {
     try {
-      const res = await axios.get(`http://localhost:3030/product/productByID/${productId.productId}`);
+      const res = await axios.get(`https://ecommerce-back-gaif.onrender.com/product/productByID/${productId.productId}`);
      
       setData(res.data);
 

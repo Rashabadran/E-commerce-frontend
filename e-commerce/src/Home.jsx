@@ -14,16 +14,16 @@ import instagram from "../src/images/instagram.png"
 import gmail from "../src/images/gmail.png"
 import axios from 'axios';
 import Arrow from "../src/images/Arrow.png"
-import { useState, useEffect,useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from "./NavBar";
 import Footer from './Footer';
 
 function App() {
 
-const [categoryFetching,setCategory]=useState([])
-const loadCategories = async () => {
-    const res = await axios.get('http://localhost:3030/cat/');
+  const [categoryFetching, setCategory] = useState([])
+  const loadCategories = async () => {
+    const res = await axios.get('https://ecommerce-back-gaif.onrender.com/cat/');
     setCategory(res.data);
   };
   //    useEffect(() => {
@@ -35,13 +35,13 @@ const loadCategories = async () => {
   }, []);
 
   let currentSlide = 0;
-  
-  const imagesss=[
-    {src:slider2, alt:"Image 1"},
-    {src:slider3, alt:"Image 2"},
-    {src:slider1, alt:"Image 3"}
+
+  const imagesss = [
+    { src: slider2, alt: "Image 1" },
+    { src: slider3, alt: "Image 2" },
+    { src: slider1, alt: "Image 3" }
   ]
-const delay = 2500;
+  const delay = 2500;
 
 
   const [index, setIndex] = useState(0);
@@ -70,7 +70,7 @@ const delay = 2500;
 
 
 
-  
+
 
 
 
@@ -108,39 +108,39 @@ const delay = 2500;
   return (
     <div className="App">
 
-   <NavBar/>
+      <NavBar />
 
 
 
-       <div className="slideshow">
-      <div
-        className="slideshowSlider"
-        style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
-      >
-        {imagesss.map((image, index) => (
-          <img
-            key={index}
-            src={image.src}
-            
-            alt={image.alt}
-            className="slideP"
-          />
-        ))}
+      <div className="slideshow">
+        <div
+          className="slideshowSlider"
+          style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
+        >
+          {imagesss.map((image, index) => (
+            <img
+              key={index}
+              src={image.src}
+
+              alt={image.alt}
+              className="slideP"
+            />
+          ))}
+        </div>
+
+        <div className="slideshowDots">
+          {imagesss.map((_, idx) => (
+            <div
+              key={idx}
+              className={`slideshowDot${index === idx ? " active" : ""}`}
+              onClick={() => {
+                setIndex(idx);
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
 
-      <div className="slideshowDots">
-        {imagesss.map((_, idx) => (
-          <div
-            key={idx}
-            className={`slideshowDot${index === idx ? " active" : ""}`}
-            onClick={() => {
-              setIndex(idx);
-            }}
-          ></div>
-        ))}
-      </div>
-    </div>
-      
 
 
 
@@ -157,24 +157,24 @@ const delay = 2500;
 
 
           <div className='cover'>
-      
+
             <div className='scroll-devs'>
-  { categoryFetching.filter(item => item.season === "winter" || item.season==="Winter").map((item, index) => (
-    <div key={item._id} className='child'>
-    { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
-    <Link to={`/ProductsPage/${item._id}`}>
-      <img className='child-image' src={item.image.url} alt={item.name} /></Link>
+              {categoryFetching.filter(item => item.season === "winter" || item.season === "Winter").map((item, index) => (
+                <div key={item._id} className='child'>
+                  {item.sale > 0 && (<div className="discount">{item.sale}%</div>)}
+                  <Link to={`/ProductsPage/${item._id}`}>
+                    <img className='child-image' src={item.image.url} alt={item.name} /></Link>
 
-      
-      
-    <Link  to={`/ProductsPage/${item._id}`}  className='child-image-button'>
-     <p className='paragraph-product'>  {item.name}</p>
-       <img src={Arrow} alt=""  />
-      </Link>
 
-    </div>
-  ))}
-</div>
+
+                  <Link to={`/ProductsPage/${item._id}`} className='child-image-button'>
+                    <p className='paragraph-product'>  {item.name}</p>
+                    <img src={Arrow} alt="" />
+                  </Link>
+
+                </div>
+              ))}
+            </div>
 
 
 
@@ -208,25 +208,25 @@ const delay = 2500;
 
             <button className='leftarrow' onClick={() => scrollrsec()}><img className='arrows-heights' src={leftarrow} /> </button>
           </div>
-           
+
 
           <div className='cover'>
             <div className='scroll-devos'>
-             
-            {categoryFetching.filter(item => item.season === "summer").map((item, index) => (
-          <div key={index} className='child'>
-         
-           { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
-              <Link to={`/ProductsPage/${item._id}`}>
-      <img className='child-image' src={item.image.url} alt={item.name} /></Link>
 
-            <Link  to={`/ProductsPage/${item._id}`}  className='child-image-button'>
-            <p className='paragraph-product'>
- {item.name} </p><img src={Arrow} alt=""  /></Link>
+              {categoryFetching.filter(item => item.season === "summer").map((item, index) => (
+                <div key={index} className='child'>
 
-          </div>
-        ))}
-                        </div>
+                  {item.sale > 0 && (<div className="discount">{item.sale}%</div>)}
+                  <Link to={`/ProductsPage/${item._id}`}>
+                    <img className='child-image' src={item.image.url} alt={item.name} /></Link>
+
+                  <Link to={`/ProductsPage/${item._id}`} className='child-image-button'>
+                    <p className='paragraph-product'>
+                      {item.name} </p><img src={Arrow} alt="" /></Link>
+
+                </div>
+              ))}
+            </div>
 
 
 
@@ -252,24 +252,24 @@ const delay = 2500;
       <div className='pablo-description'>
 
         <p className='description-header' >PABLO</p>
-        <p className='description-description' id="about-Us">Welcome to PABLO, your one-stop shop for stylish and 
-        affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion, 
-        including casual wear, business attire, and formal wear.
-        Pablo also help the customers to find the right clothing and accessories to suit their individual tastes and needs. </p>
+        <p className='description-description' id="about-Us">Welcome to PABLO, your one-stop shop for stylish and
+          affordable men's clothing. Our carefully curated collection features the latest trends in men's fashion,
+          including casual wear, business attire, and formal wear.
+          Pablo also help the customers to find the right clothing and accessories to suit their individual tastes and needs. </p>
 
 
-       
+
 
       </div>
 
 
 
-    
 
 
 
 
-      <Footer/>
+
+      <Footer />
 
 
 

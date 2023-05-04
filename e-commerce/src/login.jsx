@@ -46,7 +46,7 @@ function Login() {
     const submitlogin = async () => {
         try {
             const data = { email: username, password: password };
-            const response = await axios.post(`http://localhost:3030/users/login`, data);
+            const response = await axios.post(`https://ecommerce-back-gaif.onrender.com/users/login`, data);
             // console.log(response.data.role);
             // console.log(response.data.token);
             if (response.data.role == "admin") {
