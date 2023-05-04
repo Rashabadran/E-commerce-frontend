@@ -14,6 +14,9 @@ function Signup() {
 
 
 
+//     useEffect(() => {
+//     console.clear();
+//   }, []);
 
 
 

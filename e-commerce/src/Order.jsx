@@ -17,9 +17,9 @@ import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Order() {
-     useEffect(() => {
-    console.clear();
-  }, []);
+  //    useEffect(() => {
+  //   console.clear();
+  // }, []);
 
   const sendEmail = () => {
     emailjs

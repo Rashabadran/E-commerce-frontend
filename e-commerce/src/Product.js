@@ -33,7 +33,10 @@ function Product() {
   const [title,setTitle]=useState("");
   const [price,setPrice]=useState();
   // const { productId } = match.params;
-
+   
+  //    useEffect(() => {
+  //   console.clear();
+  // }, []);
 
 // Get all size and color buttons
 const sizeButtons = document.querySelectorAll('.sizeDetailsName');

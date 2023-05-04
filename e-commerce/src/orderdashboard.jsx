@@ -18,7 +18,9 @@ import { toast, ToastContainer, useToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Orderdashbord() {
-
+  // useEffect(() => {
+  //   console.clear();
+  // }, []);
 
   const [data, setData] = useState([]);
   const [cartStuff, setCartStuff] = useState([]);

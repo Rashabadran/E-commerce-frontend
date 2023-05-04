@@ -19,14 +19,16 @@ import { Link } from 'react-router-dom';
 import NavBar from "./NavBar";
 import Footer from './Footer';
 
-function Home() {
+function App() {
 
 const [categoryFetching,setCategory]=useState([])
 const loadCategories = async () => {
     const res = await axios.get('http://localhost:3030/cat/');
     setCategory(res.data);
   };
- 
+  //    useEffect(() => {
+  //   console.clear();
+  // }, []);
 
   useEffect(() => {
     loadCategories();
@@ -117,9 +119,9 @@ const delay = 2500;
       >
         {imagesss.map((image, index) => (
           <img
-        
             key={index}
             src={image.src}
+            
             alt={image.alt}
             className="slideP"
           />
@@ -150,7 +152,7 @@ const delay = 2500;
         <div className='scroll-collection'>
           <div className='parent-arrow'>
 
-            <button className='leftarrow' onClick={() => scrollr()}><img  className='arrows-heights' src={leftarrow} /> </button>
+            <button className='leftarrow' onClick={() => scrollr()}><img className='arrows-heights' src={leftarrow} /> </button>
           </div>
 
 
@@ -161,13 +163,13 @@ const delay = 2500;
     <div key={item._id} className='child'>
     { item.sale >0 && ( <div className="discount">{item.sale}%</div>)}
     <Link to={`/ProductsPage/${item._id}`}>
-      <img className='child-image'   src={item.image.url} alt={item.name} /></Link>
+      <img className='child-image' src={item.image.url} alt={item.name} /></Link>
 
       
       
     <Link  to={`/ProductsPage/${item._id}`}  className='child-image-button'>
      <p className='paragraph-product'>  {item.name}</p>
-       <img src={Arrow} alt=""   />
+       <img src={Arrow} alt=""  />
       </Link>
 
     </div>
@@ -179,7 +181,7 @@ const delay = 2500;
           </div>
 
 
-          <div className='parent-arrow'><button className='leftarrow' onClick={() => scroll()}><img   className='arrows-heights' src={rightarrow} /></button></div>
+          <div className='parent-arrow'><button className='leftarrow' onClick={() => scroll()}><img className='arrows-heights' src={rightarrow} /></button></div>
 
         </div>
 
@@ -204,7 +206,7 @@ const delay = 2500;
         <div className='scroll-collection'>
           <div className='parent-arrow'>
 
-            <button className='leftarrow' onClick={() => scrollrsec()}><img   className='arrows-heights' src={leftarrow} /> </button>
+            <button className='leftarrow' onClick={() => scrollrsec()}><img className='arrows-heights' src={leftarrow} /> </button>
           </div>
            
 
@@ -278,4 +280,4 @@ const delay = 2500;
   );
 }
 
-export default Home;
+export default App;
