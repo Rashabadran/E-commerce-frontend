@@ -382,6 +382,7 @@ function Dashboard() {
     // console.log(threeimages);
     // console.log("success product amira");
     toast.success('Product added successfully!', { position: toast.POSITION.TOP_RIGHT });
+    
   };
 
 

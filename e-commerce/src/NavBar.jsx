@@ -15,11 +15,12 @@ import { Link } from 'react-router-dom';
 function NavBar() {
 
   const [show, setshow] = useState(true)
+  
 
   function checkUserRole() {
+   
     const userRole = sessionStorage.getItem('role');
-    const token = sessionStorage.getItem('token');
-
+    const token = sessionStorage.getItem('token')
 
     // Get the user's role from session storage
     if (!token || !userRole) {
@@ -48,7 +49,7 @@ function NavBar() {
     <div className='navbar-container'>
 
       <div>
-        <img className='logoimg' src={logo} alt="" />
+        <img className='logoimgN' src={logo} alt="" />
       </div>
 
 
@@ -61,12 +62,13 @@ function NavBar() {
 
       </div>
       <div className='last-header'>
+      
 
         <Link to={"/Login"} style={{ display: show ? 'block' : 'none' }}>
           <p className="nav-buttons">sign In </p>
         </Link>
 
-
+    
 
         <Link to={`/Order`}> <img src={cartlogo} className="cartlogo" alt="" /></Link>
 

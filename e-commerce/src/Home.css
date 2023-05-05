@@ -17,7 +17,7 @@
 .slideP {
   display: inline-block;
 
-  height: 35vw;
+  height: 40vw;
   width: 100%;
 }
 a {
@@ -49,14 +49,14 @@ a {
 .navbar-container {
   width: 100%;
   background-color: #000000;
-  height: 4vw;
+  /* height: 4vw; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
 
-.logoimg {
+.logoimgN {
   height: 100%;
 }
 
@@ -500,8 +500,8 @@ li {
   .parent-arrow {
     margin-top: 5rem;
   }
-  .logoimg {
-    max-width: 78%;
+  .logoimgN {
+    max-width: 23vw;
 }
 }
 
@@ -604,7 +604,7 @@ li {
 }
 .arrows-heights{
     height: 100%;
-      width: 100%;
+      width: 7vw;
 }
 
 .cover{
@@ -655,7 +655,7 @@ margin-top: 2rem;
       margin:0rem 2.5rem;
     } */
     .parent-arrow {
-      margin-top: 13rem;
+      margin-top: 8rem;
   }
 
   .winter-collection {
